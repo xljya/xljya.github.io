@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yl-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yl-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liuyueyue.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="相关概念讲解首先说明 键字&#x3D;码字，所以 主键&#x3D;主码&#x3D;主关键字，候选键&#x3D;候选码&#x3D;候选关键字   码&#x3D;超键：能够唯一标识一条记录的属性或属性集。  标识性：一个数据表的所有记录都具有不同的超键 非空性：不能为空 有些时候也把码称作“键”   候选键&#x3D;候选码：能够唯一标识一条记录的最小属性集  标识性：一个数据表的所有记录都具有不同的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关系数据库的简单概念和范式理解">
+<meta property="og:url" content="http://liuyueyue.top/2023/10/17/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E6%A6%82%E5%BF%B5%E5%92%8C%E8%8C%83%E5%BC%8F%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="xlのBlog">
+<meta property="og:description" content="相关概念讲解首先说明 键字&#x3D;码字，所以 主键&#x3D;主码&#x3D;主关键字，候选键&#x3D;候选码&#x3D;候选关键字   码&#x3D;超键：能够唯一标识一条记录的属性或属性集。  标识性：一个数据表的所有记录都具有不同的超键 非空性：不能为空 有些时候也把码称作“键”   候选键&#x3D;候选码：能够唯一标识一条记录的最小属性集  标识性：一个数据表的所有记录都具有不同的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231017090955695.png">
+<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231017105656057.png">
+<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231017105716977.png">
+<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231017110705119.png">
+<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231017110951519.png">
+<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231017111116265.png">
+<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231017111247348.png">
+<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231017111442520.png">
+<meta property="article:published_time" content="2023-10-17T01:00:52.000Z">
+<meta property="article:modified_time" content="2023-10-17T03:33:28.303Z">
+<meta property="article:author" content="xl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.xljyaone.top//xlimage-20231017090955695.png">
+
+
+<link rel="canonical" href="http://liuyueyue.top/2023/10/17/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E6%A6%82%E5%BF%B5%E5%92%8C%E8%8C%83%E5%BC%8F%E7%90%86%E8%A7%A3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://liuyueyue.top/2023/10/17/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E6%A6%82%E5%BF%B5%E5%92%8C%E8%8C%83%E5%BC%8F%E7%90%86%E8%A7%A3/","path":"2023/10/17/关系数据库的简单概念和范式理解/","title":"关系数据库的简单概念和范式理解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>关系数据库的简单概念和范式理解 | xlのBlog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">xlのBlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B2%E8%A7%A3"><span class="nav-number">1.1.</span> <span class="nav-text">讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0"><span class="nav-number">1.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="nav-number">2.</span> <span class="nav-text">函数依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="nav-number">2.1.</span> <span class="nav-text">完全函数依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="nav-number">2.2.</span> <span class="nav-text">部分函数依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="nav-number">2.3.</span> <span class="nav-text">传递函数依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8C%83%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">范式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1NF"><span class="nav-number">3.1.</span> <span class="nav-text">1NF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2NF"><span class="nav-number">3.2.</span> <span class="nav-text">2NF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3NF"><span class="nav-number">3.3.</span> <span class="nav-text">3NF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BCNF"><span class="nav-number">3.4.</span> <span class="nav-text">BCNF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xl"
+      src="/images/preview.jpg">
+  <p class="site-author-name" itemprop="name">xl</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://liuyueyue.top/2023/10/17/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E6%A6%82%E5%BF%B5%E5%92%8C%E8%8C%83%E5%BC%8F%E7%90%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/preview.jpg">
+      <meta itemprop="name" content="xl">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlのBlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="关系数据库的简单概念和范式理解 | xlのBlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关系数据库的简单概念和范式理解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-17 09:00:52 / 修改时间：11:33:28" itemprop="dateCreated datePublished" datetime="2023-10-17T09:00:52+08:00">2023-10-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><h3 id="讲解"><a href="#讲解" class="headerlink" title="讲解"></a>讲解</h3><p><strong>首先说明 键字&#x3D;码字，所以 主键&#x3D;主码&#x3D;主关键字，候选键&#x3D;候选码&#x3D;候选关键字</strong></p>
+<p><img src="https://img.xljyaone.top//xlimage-20231017090955695.png" alt="image-20231017090955695"></p>
+<ol>
+<li><p><strong>码&#x3D;超键</strong>：能够<strong>唯一标识</strong>一条记录的属性或属性集。</p>
+<ul>
+<li>标识性：一个数据表的所有记录都具有不同的超键</li>
+<li>非空性：不能为空</li>
+<li>有些时候也把码称作“键”</li>
+</ul>
+</li>
+<li><p><strong>候选键&#x3D;候选码</strong>：能够<strong>唯一标识</strong>一条记录的<strong>最小属性集</strong></p>
+<ul>
+<li>标识性：一个数据表的所有记录都具有不同的候选键</li>
+<li>最小性：任一候选键的任何真子集都不能唯一标识一个记录（比如在成绩表中（学号,课程号）是一个候选键，单独的学号，课程号都不能决定一条记录）</li>
+<li>非空性：不能为空</li>
+<li><strong>候选键是没有多余属性的超键</strong></li>
+<li>举例：学生ID是候选码，那么含有候选码的都是码。</li>
+<li>少部分地方也有叫超级码的，但是见得不多</li>
+</ul>
+</li>
+<li><p><strong>主键&#x3D;主码</strong>：<strong>某个</strong>能够<strong>唯一标识</strong>一条记录的<strong>最小属性集（是从候选码里人为挑选的一条）</strong></p>
+<ul>
+<li>唯一性：一个数据表只能有一个主键</li>
+<li>标识性：一个数据表的所有记录都具有不同的主键取值</li>
+<li>非空性：不能为空</li>
+<li>人为的选取某个候选码为主码</li>
+</ul>
+</li>
+<li><p><strong>主属性：</strong>包含在任一候选码中的属性称主属性。简单来说，主属性是候选码所有属性的并集</p>
+</li>
+<li><p><strong>非主属性</strong>：不包含在候选码中的属性称为非主属性。 非主属性是相对于主属性来定义的</p>
+</li>
+<li><p><strong>外键（foreign key）</strong>：子数据表中出现的<strong>父数据表的主键</strong>，称为子数据表的外键</p>
+</li>
+<li><p><strong>全码：</strong>当所有的属性共同构成一个候选码时，这时该候选码为全码</p>
+</li>
+<li><p><strong>代理键</strong>：当不适合用任何一个候选键作为主键时（如数据太长等），添加一个没有实际意义的键作为主键，这个键就是代理键。（如常用的序号1、2、3）</p>
+</li>
+<li><p><strong>自然键</strong>：自然生活中唯一能够标识一条记录的键（如身份证）</p>
+</li>
+</ol>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>学生成绩信息表中有（学号、姓名、性别、年龄、系别、专业等）</p>
+<p><strong>超键&#x2F;码：</strong></p>
+<p>由于学号能确定一个学生，因此学生表中含有学号的任意组合都为此表的超键。如：（学号）、（学号，姓名）、（学号，性别）等</p>
+<p>若我们假设学生的姓名唯一，没有重名的现象。</p>
+<p>  学号唯一，所以是一个超键<br>  姓名唯一，所以是一个超键<br>（姓名，性别）唯一，所以是一个超键<br>（姓名，年龄）唯一，所以是一个超键<br>（姓名，性别，年龄）唯一，所以是一个超键</p>
+<p><strong>候选键：</strong></p>
+<p>   学号唯一，而且没有多余属性，所以是一个候选键</p>
+<p>   姓名唯一，而且没有多余属性，所以是一个候选键</p>
+<p>  （姓名，性别）唯一，但是单独姓名一个属性就能确定这个人是谁，所以性别这个属性就是多余属性，所以（姓名，性别）不是候选键<br>  （姓名，年龄），（姓名，性别，年龄）同上，也不是候选键</p>
+<p><strong>主键：</strong></p>
+<p>主键就是候选键里面的一个，是人为规定的，例如学生表中，我们通常会让“学号”做主键，学号能唯一标识这一个元组。</p>
+<p><strong>外键：</strong></p>
+<p>外键就很简单了，假如我们还有一个教师表，每个教师都有自己的编号，假设老师编号在教师表中是主键，在学生表中它就是外键</p>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p><img src="https://img.xljyaone.top//xlimage-20231017105656057.png" alt="image-20231017105656057"></p>
+<p><img src="https://img.xljyaone.top//xlimage-20231017105716977.png" alt="image-20231017105716977"></p>
+<h2 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h2><p><strong>在一个表里面，属性X可以映射到属性Y，也就是说知道了X就能确定Y，称X为决定因素。</strong></p>
+<p><strong>有一个关系模式S(Sno,Sname,Sage)</strong></p>
+<p>如果知道了一个学生的学号Sno，那我就能确定他的姓名Sname和年龄Sage。</p>
+<p><img src="https://img.xljyaone.top//xlimage-20231017110705119.png" alt="image-20231017110705119"></p>
+<p>如果强制规定学生姓名不能重复。那么，知道了一个学生的姓名也是可以确定其他属性的，这也是满足函数依赖关系的。</p>
+<h3 id="完全函数依赖"><a href="#完全函数依赖" class="headerlink" title="完全函数依赖"></a>完全函数依赖</h3><p><strong>有一个关系模式S(Sno,Sname,Cno,Grade)</strong></p>
+<p>如果我想知道某位学生的某一门课的成绩Grade，那我必须得<strong>同时知道</strong>他的学号Sno和课程号Cno。<br>但如果我只知道一部分信息，比如他的Sno或者Cno可以吗？答案是不行的！<strong>此时称Y[Grade]完全依赖于X[Sno,Cno]。</strong></p>
+<p><img src="https://img.xljyaone.top//xlimage-20231017110951519.png" alt="image-20231017110951519"></p>
+<h3 id="部分函数依赖"><a href="#部分函数依赖" class="headerlink" title="部分函数依赖"></a>部分函数依赖</h3><p>如果我想知道某位学生的姓名Sname，那我知道他的学号Sno就可以了。也就是说<strong>Y[Sname]只函数依赖于X[Sno,Cno]中的子集x[Sno</strong>]<strong>，此时称Y部分函数依赖于X。</strong></p>
+<p><img src="https://img.xljyaone.top//xlimage-20231017111116265.png" alt="image-20231017111116265"></p>
+<h3 id="传递函数依赖"><a href="#传递函数依赖" class="headerlink" title="传递函数依赖"></a>传递函数依赖</h3><p><strong>有一个关系模式S(Sno,Sdept,Mname)</strong><br>如果我知道了一个学生的学号Sno，那我就能知道他所在的系Sdept。(因为理论上一个学生只属于一个系)<br>如果我知道了某一个系Sdept，那么我就能知道这个系的系主任的姓名Mname。(一个系只有一个正的系主任)<br>也就是说，我知道了一个学生的学号Sno，其实我就知道了他所在系的系主任的姓名Mname。但这个过程中，他们是<strong>不存在直接函数依赖</strong>的，我需要通过系名称<strong>Sdept作为一个桥梁</strong>去把二者联系起来的。<br><img src="https://img.xljyaone.top//xlimage-20231017111247348.png" alt="image-20231017111247348"></p>
+<h2 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h2><p>关系数据库中的模式设计要满足一定的规范，引入了范式这一概念。<br>不管做哪种范式的设计，最终要的思想是“<strong>one fact in one place</strong>”，也就是“一事一地”。</p>
+<p><strong>举例</strong></p>
+<p>现有一关于学生的关系模式Student(学生编号 , 学生姓名, 班级编号, 院系, 课程编号 , 成绩)</p>
+<p><img src="https://img.xljyaone.top//xlimage-20231017111442520.png" alt="image-20231017111442520"></p>
+<p><strong>（学生编号、课程编号）</strong>作为主键，可以唯一标识每条元组</p>
+<h3 id="1NF"><a href="#1NF" class="headerlink" title="1NF"></a>1NF</h3><p>定义：关系中每一分量不可再分。即不能以集合、序列等作为属性。（也就是不能表中套表，要保证数据的原子性。）</p>
+<table>
+<thead>
+<tr>
+<th>学生编号</th>
+<th>课程编号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S01</td>
+<td>{C1，C2，C3}</td>
+</tr>
+<tr>
+<td>S02</td>
+<td>{C1，C4}</td>
+</tr>
+</tbody></table>
+<p>它就不满足1NF，因为{C1，C2，C3}和{C1，C4}是集合。</p>
+<p>修改为符合1NF：</p>
+<table>
+<thead>
+<tr>
+<th>学生编号</th>
+<th>课程编号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S01</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>S01</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>S01</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>S02</td>
+<td>C1</td>
+</tr>
+</tbody></table>
+<h3 id="2NF"><a href="#2NF" class="headerlink" title="2NF"></a>2NF</h3><p><strong>定义：在1NF基础上，消除非主属性对键的部分依赖，则称它符合2NF。</strong></p>
+<p>对于<code>学生姓名</code>、学生所属的<code>班级编号</code>、<code>院系</code>，这三个属性可以直接通过<code>学生编号</code>来确定，在这里<code>课程编号#</code>显得很多余。也就是，<code>学生姓名、班级编号、院系</code>对（<strong>学生编号、课程编号</strong>）<strong>部分函数依赖</strong>。把Student表进行拆分，可以消除部分依赖。</p>
+<p>其中，学生表Student如下：</p>
+<table>
+<thead>
+<tr>
+<th>S01</th>
+<th>杨明</th>
+<th>D01</th>
+<th>思齐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S02</td>
+<td>李婉</td>
+<td>D01</td>
+<td>思齐</td>
+</tr>
+<tr>
+<td>S01</td>
+<td>杨明</td>
+<td>D01</td>
+<td>思齐</td>
+</tr>
+<tr>
+<td>S03</td>
+<td>刘海</td>
+<td>D02</td>
+<td>述圣</td>
+</tr>
+<tr>
+<td>S04</td>
+<td>安然</td>
+<td>D02</td>
+<td>述圣</td>
+</tr>
+<tr>
+<td>S05</td>
+<td>乐天</td>
+<td>D03</td>
+<td>省身</td>
+</tr>
+</tbody></table>
+<p>学生-课程表如下：</p>
+<table>
+<thead>
+<tr>
+<th>学生编号</th>
+<th>课程编号</th>
+<th>成绩</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S01</td>
+<td>C01</td>
+<td>90</td>
+</tr>
+<tr>
+<td>S02</td>
+<td>C01</td>
+<td>87</td>
+</tr>
+<tr>
+<td>S01</td>
+<td>C02</td>
+<td>92</td>
+</tr>
+<tr>
+<td>S03</td>
+<td>C01</td>
+<td>95</td>
+</tr>
+<tr>
+<td>S04</td>
+<td>C02</td>
+<td>78</td>
+</tr>
+<tr>
+<td>S05</td>
+<td>C01</td>
+<td>82</td>
+</tr>
+</tbody></table>
+<h3 id="3NF"><a href="#3NF" class="headerlink" title="3NF"></a>3NF</h3><p><strong>定义：在2NF基础上，消除非主属性对键的传递依赖，则称它符合3NF。</strong></p>
+<p>根据上面对传递依赖的分析，对于Student表，学生编号可以唯一确定他所在的院系，但是注意到这中间存在传递过程，即学生编号唯一确定该学生所对应的班级编号，班级编号对应唯一的院系。<strong>我们称，院系对学生编号传递函数依赖。</strong></p>
+<p>把Student表继续进行拆分，可以消除传递依赖。</p>
+<p>其中，学生表Student如下：</p>
+<table>
+<thead>
+<tr>
+<th>学生编号</th>
+<th>学生姓名</th>
+<th>班级编号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S01</td>
+<td>杨明</td>
+<td>D01</td>
+</tr>
+<tr>
+<td>S02</td>
+<td>李婉</td>
+<td>D01</td>
+</tr>
+<tr>
+<td>S01</td>
+<td>杨明</td>
+<td>D01</td>
+</tr>
+<tr>
+<td>S03</td>
+<td>刘海</td>
+<td>D02</td>
+</tr>
+<tr>
+<td>S04</td>
+<td>安然</td>
+<td>D02</td>
+</tr>
+<tr>
+<td>S05</td>
+<td>乐天</td>
+<td>D03</td>
+</tr>
+</tbody></table>
+<p>班级-院系表如下：</p>
+<table>
+<thead>
+<tr>
+<th>班级编号</th>
+<th>院系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D01</td>
+<td>思齐</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>述圣</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>省身</td>
+</tr>
+</tbody></table>
+<h3 id="BCNF"><a href="#BCNF" class="headerlink" title="BCNF"></a>BCNF</h3><p><strong>每个非主属性必须直接（或完全）依赖于候选键的所有属性，而不是候选键的一部分。</strong></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jeremy_Tsang/article/details/108949656">数据库函数依赖——完全函数依赖、部分函数依赖、传递函数依赖【通俗易懂，博主会讲人话】_完全函数依赖和部分函数依赖怎么理解-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wyh7280/article/details/83350722">范式通俗理解：1NF、2NF、3NF和BNCF_数据库范式-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sumaliqinghua/article/details/85872446">一文搞懂候选码、主码、全码、外码、主属性、主键、主关键字、非主属性清晰总结_什么是候选码举例-CSDN博客</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/27/hello-world/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+
+    <span class="author" itemprop="copyrightHolder">xl</span>
+
+<div>
+<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><span>本网站由</span> <img src="https://img.xljyaone.top//xl%E9%8D%99%E5%A0%9F%E5%AA%BF%E6%B5%9C%E6%85%B1logo2.png" width="45px" />提供CDN加速/云存储服务</a>
+</div>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
