@@ -6,7 +6,7 @@
   <link href="http://liuyueyue.top/atom.xml" rel="self"/>
   
   <link href="http://liuyueyue.top/"/>
-  <updated>2023-12-25T06:30:37.905Z</updated>
+  <updated>2024-01-26T12:22:35.222Z</updated>
   <id>http://liuyueyue.top/</id>
   
   <author>
@@ -17,15 +17,23 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>圣诞树</title>
-    <link href="http://liuyueyue.top/posts/2023/12/25/undefined.html"/>
-    <id>http://liuyueyue.top/posts/2023/12/25/undefined.html</id>
-    <published>2023-12-25T06:17:50.000Z</published>
-    <updated>2023-12-25T06:30:37.905Z</updated>
+    <title>国内Linux云服务器高速下载GitHub</title>
+    <link href="http://liuyueyue.top/posts/2024/01/26/2525754687.html"/>
+    <id>http://liuyueyue.top/posts/2024/01/26/2525754687.html</id>
+    <published>2024-01-26T11:49:19.000Z</published>
+    <updated>2024-01-26T12:22:35.222Z</updated>
+    
+    
+    <summary type="html">解决国内Linux云服务器下载github文件慢的问题。</summary>
     
     
     
+    <category term="云服务器" scheme="http://liuyueyue.top/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
+    
+    <category term="Linux" scheme="http://liuyueyue.top/tags/Linux/"/>
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   
