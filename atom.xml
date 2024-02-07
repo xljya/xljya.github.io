@@ -6,7 +6,7 @@
   <link href="http://liuyueyue.top/atom.xml" rel="self"/>
   
   <link href="http://liuyueyue.top/"/>
-  <updated>2024-01-26T12:22:35.222Z</updated>
+  <updated>2024-02-07T12:14:56.696Z</updated>
   <id>http://liuyueyue.top/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux搭建JavaEE环境</title>
+    <link href="http://liuyueyue.top/posts/2024/02/07/145460297.html"/>
+    <id>http://liuyueyue.top/posts/2024/02/07/145460297.html</id>
+    <published>2024-02-07T08:52:08.000Z</published>
+    <updated>2024-02-07T12:14:56.696Z</updated>
+    
+    
+    <summary type="html">简单记录一下Linux搭建JavaEE环境的过程</summary>
+    
+    
+    
+    <category term="虚拟机" scheme="http://liuyueyue.top/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+    <category term="Linux" scheme="http://liuyueyue.top/tags/Linux/"/>
+    
+    <category term="Java" scheme="http://liuyueyue.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>国内Linux云服务器高速下载GitHub</title>
     <link href="http://liuyueyue.top/posts/2024/01/26/2525754687.html"/>
     <id>http://liuyueyue.top/posts/2024/01/26/2525754687.html</id>
     <published>2024-01-26T11:49:19.000Z</published>
-    <updated>2024-01-26T12:22:35.222Z</updated>
+    <updated>2024-01-26T12:23:03.984Z</updated>
     
     
     <summary type="html">解决国内Linux云服务器下载github文件慢的问题。</summary>
