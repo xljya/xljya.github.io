@@ -27,21 +27,21 @@
 <meta property="og:site_name" content="StargazeのBlog">
 <meta property="og:description" content="总结了一下自己在刷题过程中遇到的输入输出问题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231123204833259.png">
-<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231123213506775.png">
-<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231123212419425.png">
-<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231123212801199.png">
-<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231123214216775.png">
-<meta property="og:image" content="https://img.xljyaone.top//xlimage-20231123234809060.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123204833259.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123213506775.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123212419425.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123212801199.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123214216775.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123234809060.png">
 <meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231129232147258.png">
-<meta property="og:image" content="https://img.xljyaone.top//xlxlimage-20231123212419425.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlxlimage-20231123212419425.png">
 <meta property="article:published_time" content="2023-11-23T12:31:28.000Z">
-<meta property="article:modified_time" content="2023-12-13T13:15:26.910Z">
+<meta property="article:modified_time" content="2024-04-10T07:17:11.791Z">
 <meta property="article:author" content="Stargaze">
 <meta property="article:tag" content="刷题日常">
 <meta property="article:tag" content="刷题总结">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.xljyaone.top//xlimage-20231123204833259.png">
+<meta name="twitter:image" content="https://img.liuyueyue.top//xlimage-20231123204833259.png">
 
 
 <link rel="canonical" href="http://liuyueyue.top/posts/2023/11/23/1962820535.html">
@@ -170,7 +170,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -181,7 +181,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -258,7 +258,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-13 21:15:26" itemprop="dateModified" datetime="2023-12-13T21:15:26+08:00">2023-12-13</time>
+      <time title="修改时间：2024-04-10 15:17:11" itemprop="dateModified" datetime="2024-04-10T15:17:11+08:00">2024-04-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -298,14 +298,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.7k</span>
+      <span>6.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
+      <span>11 分钟</span>
     </span>
 </div>
 
@@ -326,6 +326,7 @@
 <h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>java常用的输入方式有四种（System.in,Scanner,InputStreamReader,BufferesReader），这里一般我们常用的是Scanner或者BufferesReader，我只介绍这两种。</p>
 <h2 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h2><p>java.util.Scanner是Java5的新特征，主要功能是简化文本扫描，这个类最实用的地方表现在获取控制台输入。当通过new Scanner(System.in)创建一个Scanner，控制台会一直等待输入，直到敲回车键结束，把所输入的内容传给Scanner，作为扫描对象。如果要获取输入的内容，则只需要调用Scanner的nextLine()方法即可。</p>
 <p>Scanner也可以从字符串（Readable）、输入流、文件等等来直接构建Scanner对象，有了Scanner了，就可以逐段（根据正则分隔式）来扫描整个文本，并对扫描后的结果做想要的处理。</p>
+<p><strong><code>Scanner</code> 类的 <code>nextInt()</code> 方法实际上是从标准输入流中读取文本数据，并尝试将其解析为整数。</strong></p>
 <p><strong>控制台扫描：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> in.nextLine();</span><br><span class="line">    <span class="keyword">if</span> (line.equals(<span class="string">&quot;exit&quot;</span>)) <span class="keyword">break</span>;          <span class="comment">//如果输入为&quot;exit&quot;，则退出</span></span><br><span class="line">    System.out.println(<span class="string">&quot;输入：&quot;</span> + line);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -339,10 +340,10 @@
 
 <h2 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h2><p>BufferedReader 从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。（通常和InputStreamReader连用，因为输入的数据是字节流，需要InputStreamReader将其转成成字符流）</p>
 <p><strong>常用构造：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BufferedReader br=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BufferedReader br=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line"><span class="comment">//这行代码创建了一个能够从标准输入读取数据的 BufferedReader 对象，并将其存储在变量 br 中。</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>对应解释：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">System.in <span class="comment">//接受从控制台输入的字节</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in);</span><br><span class="line"><span class="comment">//构造一个InputStreamReader对象这个对象是字节流通向字符流的桥梁：它使用指定的 charset 读取字节并将其解码为字符。</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line"><span class="comment">//构造一个字符流的缓存，里面存放在控制台输入的字节转换后成的字符。</span></span><br><span class="line">str=bf.readLine();<span class="comment">//从这个缓存中读取一行的内容</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//整个这句话拆开来写为：</span></span><br><span class="line"><span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span> System.in ;</span><br><span class="line"><span class="type">InputStreamReader</span> <span class="variable">isr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in);</span><br><span class="line"><span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(isr);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">System.in</span><br><span class="line"><span class="comment">//System.in 是 Java 中的一个标准输入流，通常用于从控制台（键盘）读取用户输入。它是一个InputStream 对象，用于读取字节数据。</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in);</span><br><span class="line"><span class="comment">//构造一个InputStreamReader对象这个对象是字节流通向字符流的桥梁：它使用指定的 charset 读取字节并将其解码为字符。</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line"><span class="comment">//构造一个字符流的缓存，里面存放在控制台输入的字节转换后成的字符。</span></span><br><span class="line">str=bf.readLine();</span><br><span class="line"><span class="comment">//从这个缓存中读取一行的内容</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//整个这句话拆开来写为：</span></span><br><span class="line"><span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span> System.in ;</span><br><span class="line"><span class="type">InputStreamReader</span> <span class="variable">isr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in);</span><br><span class="line"><span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(isr);</span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -354,7 +355,7 @@
 <br>
 
 <p><strong>示例二：</strong></p>
-<p><img src="https://img.xljyaone.top//xlimage-20231123204833259.png" alt="image-20231123204833259"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123204833259.png" alt="image-20231123204833259"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">36</span>;</span><br><span class="line"><span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    a[i] = scanner.nextInt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <br>
@@ -363,7 +364,7 @@
 
 <h3 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h3><p><strong>示例一：</strong></p>
 <p>对于二维数组，而且<strong>样例中没有空格</strong>的时候，我们一般可以两层for循环输入，或者一层for循环，<strong>将每一行输入转换成一个字符数组。</strong></p>
-<p><img src="https://img.xljyaone.top//xlimage-20231123213506775.png" alt="image-20231123213506775"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123213506775.png" alt="image-20231123213506775"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">s[i] = (<span class="string">&quot; &quot;</span> + scanner.next()).toCharArray();  </span><br><span class="line"><span class="comment">//从下标1开始</span></span><br></pre></td></tr></table></figure>
 
 
@@ -389,7 +390,7 @@
 
 
 <h2 id="不明确数据个数"><a href="#不明确数据个数" class="headerlink" title="不明确数据个数"></a>不明确数据个数</h2><p>在我们不明确输入的行数和个数的时候，经常会用到<b>while循环+hasNext()</b>判断。</p>
-<h3 id="直接输入"><a href="#直接输入" class="headerlink" title="直接输入"></a>直接输入</h3><p><img src="https://img.xljyaone.top//xlimage-20231123212419425.png" alt="image-20231123212419425"></p>
+<h3 id="直接输入"><a href="#直接输入" class="headerlink" title="直接输入"></a>直接输入</h3><p><img src="https://img.liuyueyue.top//xlimage-20231123212419425.png" alt="image-20231123212419425"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(sc.hasNext())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">N</span> <span class="operator">=</span> sc.nextDouble();</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (N &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            N /= <span class="number">2</span>;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(cnt);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <br>
@@ -397,7 +398,7 @@
 <br>
 
 <h3 id="一维数组-1"><a href="#一维数组-1" class="headerlink" title="一维数组"></a>一维数组</h3><p><strong>示例一：</strong></p>
-<p><img src="https://img.xljyaone.top//xlimage-20231123212801199.png" alt="image-20231123212801199"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123212801199.png" alt="image-20231123212801199"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (in.hasNext()) &#123;</span><br><span class="line">    String[] a = in.nextLine().split(<span class="string">&quot;\\.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <br>
@@ -405,13 +406,13 @@
 
 
 <p><strong>示例二：</strong></p>
-<p><img src="https://img.xljyaone.top//xlimage-20231123214216775.png" alt="image-20231123214216775"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123214216775.png" alt="image-20231123214216775"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (scanner.hasNext()) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">    scanner.nextLine();</span><br><span class="line"></span><br><span class="line">    String[] str = <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">10000</span>];</span><br><span class="line">    <span class="type">int</span> <span class="variable">realCount</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        str[i] = scanner.nextLine();</span><br><span class="line">        realCount++;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (str[i].equals(<span class="string">&quot;stop&quot;</span>)) &#123;</span><br><span class="line">            realCount--;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <br>
 
 <p><strong>示例三：</strong></p>
-<p><img src="https://img.xljyaone.top//xlimage-20231123234809060.png" alt="image-20231123234809060"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123234809060.png" alt="image-20231123234809060"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式1:   </span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="comment">//将输入的内容添加到list</span></span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(in.nextLine());  <span class="comment">//输入换行结束,这个Scanner对象是读取in的内容，不是读取键盘了</span></span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            list.add(x);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式2:</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(in.nextLine());  <span class="comment">//输入换行结束,这个Scanner对象是读取in的内容，不是读取键盘了</span></span><br><span class="line">        <span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100005</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            a[n] = sc.nextInt();</span><br><span class="line">            n++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//方式3:</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        String[] str = in.nextLine().split(<span class="string">&quot; &quot;</span>);  </span><br><span class="line"><span class="comment">//输入很细节，不确定数组长度时候使用,因为nextLine()遇到回车退出</span></span><br><span class="line">        <span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100005</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">            a[i+<span class="number">1</span>]=Integer.parseInt(str[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//a[1]=str[0]，a[2]=str[1].....</span></span><br></pre></td></tr></table></figure>
 
 <br>
@@ -430,7 +431,7 @@
 
 <h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><p>基本都是难在输入，所以输出部分就没有什么内容…..</p>
 <h2 id="多组输入多组输入"><a href="#多组输入多组输入" class="headerlink" title="多组输入多组输入"></a>多组输入多组输入</h2><p>这种情况是最常见的，我们只需要不断读取每一行的内容，然后在循环末尾添加打印语句。</p>
-<p><img src="https://img.xljyaone.top//xlxlimage-20231123212419425.png"></p>
+<p><img src="https://img.liuyueyue.top//xlxlimage-20231123212419425.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(sc.hasNext())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">N</span> <span class="operator">=</span> sc.nextDouble();</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (N &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            N /= <span class="number">2</span>;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(cnt);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <br>
