@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyueyue.top/posts/2024/06/04/2264994534.html</loc>
+    
+    <lastmod>2024-06-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://liuyueyue.top/posts/2024/06/04/3539346108.html</loc>
     
     <lastmod>2024-06-04</lastmod>
@@ -410,6 +419,13 @@
   
   <url>
     <loc>http://liuyueyue.top/tags/Docker/</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://liuyueyue.top/tags/%E6%8E%A2%E9%92%88/</loc>
     <lastmod>2024-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
