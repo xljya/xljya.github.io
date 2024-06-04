@@ -6,7 +6,7 @@
   <link href="http://liuyueyue.top/atom.xml" rel="self"/>
   
   <link href="http://liuyueyue.top/"/>
-  <updated>2024-06-04T07:33:59.457Z</updated>
+  <updated>2024-06-04T07:35:38.785Z</updated>
   <id>http://liuyueyue.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://liuyueyue.top/posts/2024/06/04/3926299118.html"/>
     <id>http://liuyueyue.top/posts/2024/06/04/3926299118.html</id>
     <published>2024-06-04T03:28:29.000Z</published>
-    <updated>2024-06-04T07:33:59.457Z</updated>
+    <updated>2024-06-04T07:35:38.785Z</updated>
     
     
     <summary type="html">记录一下在Debian12安装Docker的过程。</summary>
@@ -42,15 +42,19 @@
   </entry>
   
   <entry>
-    <title>Debian12安装Nginx Proxy Manager</title>
+    <title>Docker安装Nginx Proxy Manager</title>
     <link href="http://liuyueyue.top/posts/2024/06/04/3539346108.html"/>
     <id>http://liuyueyue.top/posts/2024/06/04/3539346108.html</id>
     <published>2024-06-04T03:16:47.000Z</published>
-    <updated>2024-06-04T03:16:47.443Z</updated>
+    <updated>2024-06-04T07:54:46.532Z</updated>
     
     
     
     
+    <category term="Docker" scheme="http://liuyueyue.top/categories/Docker/"/>
+    
+    
+    <category term="Docker" scheme="http://liuyueyue.top/tags/Docker/"/>
     
   </entry>
   
@@ -59,7 +63,7 @@
     <link href="http://liuyueyue.top/posts/2024/05/14/1079937748.html"/>
     <id>http://liuyueyue.top/posts/2024/05/14/1079937748.html</id>
     <published>2024-05-14T07:33:41.000Z</published>
-    <updated>2024-06-04T03:31:45.216Z</updated>
+    <updated>2024-06-04T07:35:38.785Z</updated>
     
     
     <summary type="html">记录一下Debian12安装Nginx的过程。</summary>
@@ -82,7 +86,7 @@
     <link href="http://liuyueyue.top/posts/2024/05/12/3886968423.html"/>
     <id>http://liuyueyue.top/posts/2024/05/12/3886968423.html</id>
     <published>2024-05-12T15:12:02.000Z</published>
-    <updated>2024-05-13T10:10:30.708Z</updated>
+    <updated>2024-06-04T07:35:38.770Z</updated>
     
     
     <summary type="html">记录一下Debian12安装MySQL的过程。</summary>
@@ -267,14 +271,14 @@
     <link href="http://liuyueyue.top/posts/2023/12/09/2110329172.html"/>
     <id>http://liuyueyue.top/posts/2023/12/09/2110329172.html</id>
     <published>2023-12-09T09:38:42.000Z</published>
-    <updated>2023-12-20T13:38:28.230Z</updated>
+    <updated>2024-06-04T07:51:57.514Z</updated>
     
     
     <summary type="html">记录一下常用进制转换的方法。</summary>
     
     
     
-    <category term="数据结构与算法刷题" scheme="http://liuyueyue.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/"/>
+    <category term="数据结构与算法" scheme="http://liuyueyue.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
     <category term="刷题日常" scheme="http://liuyueyue.top/tags/%E5%88%B7%E9%A2%98%E6%97%A5%E5%B8%B8/"/>
