@@ -61,7 +61,7 @@
 <meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513173853789.png">
 <meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513174805632.png">
 <meta property="article:published_time" content="2024-05-12T15:12:02.000Z">
-<meta property="article:modified_time" content="2024-05-13T10:03:40.173Z">
+<meta property="article:modified_time" content="2024-05-13T10:10:30.708Z">
 <meta property="article:author" content="Stargaze">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="云服务器">
@@ -196,18 +196,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -284,7 +284,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-13 18:03:40" itemprop="dateModified" datetime="2024-05-13T18:03:40+08:00">2024-05-13</time>
+      <time title="修改时间：2024-05-13 18:10:30" itemprop="dateModified" datetime="2024-05-13T18:10:30+08:00">2024-05-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -312,14 +312,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>6.3k</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>11 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -397,12 +397,12 @@
 <p>提示SET PASSWORD对用户“root”@’localhost“没有意义，因为使用的身份验证方法不会将身份验证数据存储在MySQL服务器中。如果要更改身份验证参数，请考虑改用 ALTER USER。</p>
 <br>
 
-<h2 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">‘%’ - 所有情况都能访问</span><br><span class="line">‘localhost’ - 本机才能访问</span><br><span class="line">’<span class="number">111</span>.<span class="number">222</span>.<span class="number">33</span>.<span class="number">44</span>‘ - 指定 ip 才能访问</span><br></pre></td></tr></table></figure>
-
-<p>上面的界面可以直接关闭了，打开一个新的终端界面</p>
+<h2 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h2><p>上面的界面可以直接关闭了，打开一个新的终端界面</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://img.liuyueyue.top//xlimage-20240513084840471.png" alt="image-20240513084840471"></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x27;%&#x27; - 所有情况都能访问</span><br><span class="line">&#x27;localhost&#x27; - 本机才能访问</span><br><span class="line">&#x27;<span class="number">111</span>.<span class="number">222</span>.<span class="number">33</span>.<span class="number">44</span>&#x27; - 指定 ip 才能访问</span><br></pre></td></tr></table></figure>
+
 <p>接下来修改密码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password by &#x27;123456&#x27;;</span><br></pre></td></tr></table></figure>
 
@@ -542,6 +542,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/posts/2024/05/14/1079937748.html" rel="next" title="Debian12安装Nginx">
+                  Debian12安装Nginx <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
