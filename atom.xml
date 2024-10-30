@@ -6,7 +6,7 @@
   <link href="http://liuyueyue.top/atom.xml" rel="self"/>
   
   <link href="http://liuyueyue.top/"/>
-  <updated>2024-10-22T17:27:39.979Z</updated>
+  <updated>2024-10-30T10:19:15.504Z</updated>
   <id>http://liuyueyue.top/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于Spring Boot的健身房场馆预约系统</title>
+    <link href="http://liuyueyue.top/posts/2024/10/30/1262640889.html"/>
+    <id>http://liuyueyue.top/posts/2024/10/30/1262640889.html</id>
+    <published>2024-10-30T08:32:15.000Z</published>
+    <updated>2024-10-30T10:19:15.504Z</updated>
+    
+    
+    <summary type="html">记录一下毕业论文完成的过程。</summary>
+    
+    
+    
+    <category term="毕业论文" scheme="http://liuyueyue.top/categories/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="毕业论文" scheme="http://liuyueyue.top/tags/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/"/>
+    
+  </entry>
   
   <entry>
     <title>今日总结</title>
@@ -393,25 +412,6 @@
     
     
     <summary type="html">&lt;p&gt;2023.12.3总结&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="每日总结" scheme="http://liuyueyue.top/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
-    
-    
-    <category term="每日总结" scheme="http://liuyueyue.top/tags/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>今日总结</title>
-    <link href="http://liuyueyue.top/posts/2023/12/03/3173242249.html"/>
-    <id>http://liuyueyue.top/posts/2023/12/03/3173242249.html</id>
-    <published>2023-12-02T16:49:18.000Z</published>
-    <updated>2023-12-06T16:12:30.780Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;2023.12.2总结&lt;/p&gt;</summary>
     
     
     
