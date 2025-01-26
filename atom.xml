@@ -6,7 +6,7 @@
   <link href="http://liuyueyue.top/atom.xml" rel="self"/>
   
   <link href="http://liuyueyue.top/"/>
-  <updated>2025-01-23T07:03:01.982Z</updated>
+  <updated>2025-01-26T08:36:55.242Z</updated>
   <id>http://liuyueyue.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VPS制作种子和发布</title>
+    <link href="http://liuyueyue.top/posts/2025/01/26/1732245461.html"/>
+    <id>http://liuyueyue.top/posts/2025/01/26/1732245461.html</id>
+    <published>2025-01-25T16:21:31.000Z</published>
+    <updated>2025-01-26T08:36:55.242Z</updated>
+    
+    
+    <summary type="html">VPS制作种子和发布的教程。</summary>
+    
+    
+    
+    <category term="PT" scheme="http://liuyueyue.top/categories/PT/"/>
+    
+    
+    <category term="PT" scheme="http://liuyueyue.top/tags/PT/"/>
+    
+    <category term="VPS" scheme="http://liuyueyue.top/tags/VPS/"/>
+    
+  </entry>
   
   <entry>
     <title>使用bypy实现百度云盘文件上传与下载</title>
@@ -395,25 +416,6 @@
     
     
     <summary type="html">&lt;p&gt;2023.12.6总结&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="每日总结" scheme="http://liuyueyue.top/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
-    
-    
-    <category term="每日总结" scheme="http://liuyueyue.top/tags/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>今日总结</title>
-    <link href="http://liuyueyue.top/posts/2023/12/05/3173242250.html"/>
-    <id>http://liuyueyue.top/posts/2023/12/05/3173242250.html</id>
-    <published>2023-12-04T16:39:10.000Z</published>
-    <updated>2023-12-20T13:40:12.830Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;2023.12.4总结&lt;/p&gt;</summary>
     
     
     
