@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yl-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yl-16x16-next.png">
+  <link rel="mask-icon" href="/images/yl.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liuyueyue.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterance","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="记录一下Docker安装哪吒监控的过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker安装哪吒监控">
+<meta property="og:url" content="http://liuyueyue.top/posts/2024/06/04/2264994534.html">
+<meta property="og:site_name" content="StargazeのBlog">
+<meta property="og:description" content="记录一下Docker安装哪吒监控的过程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605174549668.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605170359617.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605170705695.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605163226139.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605171030134.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605171821698.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605172944263.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605173036680.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605173340777.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605173422587.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605173517802.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605173721255.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605173836927.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605174058312.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605174750646.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605174824970.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605174919430.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605175048841.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605175154472.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605175358485.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605175655677.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240605175819942.png">
+<meta property="article:published_time" content="2024-06-04T09:35:25.000Z">
+<meta property="article:modified_time" content="2024-06-05T10:00:21.202Z">
+<meta property="article:author" content="Stargaze">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="探针">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.liuyueyue.top//xlimage-20240605174549668.png">
+
+
+<link rel="canonical" href="http://liuyueyue.top/posts/2024/06/04/2264994534.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://liuyueyue.top/posts/2024/06/04/2264994534.html","path":"posts/2024/06/04/2264994534.html","title":"Docker安装哪吒监控"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Docker安装哪吒监控 | StargazeのBlog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?b343d7c07a907567847b3f01f10d0ddf"></script>
+
+
+
+
+
+  <script async defer data-website-id="de8fc437-0b80-405d-a60e-df690adf33b4" src="https://umami.liuyueyue.top/script.js" data-host-url="https://umami.liuyueyue.top/"></script>
+
+<link rel="dns-prefetch" href="comment.liuyueyue.top">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="StargazeのBlog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">StargazeのBlog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code simulation world</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章列表</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-number">3.</span> <span class="nav-text">部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="nav-number">3.1.</span> <span class="nav-text">域名解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-Proxy-Manager"><span class="nav-number">3.2.</span> <span class="nav-text">Nginx Proxy Manager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github"><span class="nav-number">3.3.</span> <span class="nav-text">Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%93%AA%E5%90%92%E7%9B%91%E6%8E%A7"><span class="nav-number">3.4.</span> <span class="nav-text">安装哪吒监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E9%9D%A2%E6%9D%BF"><span class="nav-number">3.5.</span> <span class="nav-text">登录面板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">3.6.</span> <span class="nav-text">更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Stargaze"
+      src="/images/preview.jpg">
+  <p class="site-author-name" itemprop="name">Stargaze</p>
+  <div class="site-description" itemprop="description">一个什么都想学的新手</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:lcfjya@gmail.com" title="E-Mail → mailto:lcfjya@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/xlbbd" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;xlbbd" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/xljya" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xljya" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=3857624959&site=qq&menu=yes&jumpflag=1" title="QQ → https:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;3857624959&amp;site&#x3D;qq&amp;menu&#x3D;yes&amp;jumpflag&#x3D;1" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://liuyueyue.top/posts/2024/06/04/2264994534.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/preview.jpg">
+      <meta itemprop="name" content="Stargaze">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StargazeのBlog">
+      <meta itemprop="description" content="一个什么都想学的新手">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Docker安装哪吒监控 | StargazeのBlog">
+      <meta itemprop="description" content="记录一下Docker安装哪吒监控的过程。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker安装哪吒监控
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-04 17:35:25" itemprop="dateCreated datePublished" datetime="2024-06-04T17:35:25+08:00">2024-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 18:00:21" itemprop="dateModified" datetime="2024-06-05T18:00:21+08:00">2024-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/2024/06/04/2264994534.html#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/posts/2024/06/04/2264994534.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>823</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">记录一下Docker安装哪吒监控的过程。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​	这是我第二次部署探针项目，上一次使用的是国内阿里云服务器，但因为各种原因没有安装成功，这次换了绿云美国云服务器来进行部署。</p>
+<p>​	探针就是一个服务器监控项目，用来监控VPS的情况，更多玩法可以直接去<a target="_blank" rel="noopener" href="https://nezha.wiki/">官网</a>查看。</p>
+<br>
+
+<br>
+
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
+<li>1个域名（用来反向代理）</li>
+<li>Github账号（调用接口）</li>
+<li>至少一台vps，而且已经安装了docker和Nginx Proxy Manager（没有安装可以去看前面的文章）。</li>
+<li>远程连接的工具，我使用的是Finalshell</li>
+</ol>
+<br>
+
+<br>
+
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p>分为解析域名，github调用，安装哪吒面板服务端和客户端。</p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>添加两条A记录，指向vps的ip地址即可，这样就将probe.liucf.top和agent.liucf.top这两个域名解析到了172.93.186.188这个ip地址了。</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605174549668.png" alt="image-20240605174549668"></p>
+<br>
+
+
+
+<h2 id="Nginx-Proxy-Manager"><a href="#Nginx-Proxy-Manager" class="headerlink" title="Nginx Proxy Manager"></a>Nginx Proxy Manager</h2><p>我已经安装好了npm，所以我直接使用这个域名来反代哪吒的ip和端口：172.93.186.188：8008。</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605170359617.png" alt="image-20240605170359617"></p>
+<p>因为我配置的有ufw防火墙，所以需要再放行一下端口：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605170705695.png" alt="image-20240605170705695"></p>
+<br>
+
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><ol>
+<li><p>打开：<a target="_blank" rel="noopener" href="https://github.com/settings/developers">https://github.com/settings/developers</a></p>
+</li>
+<li><p>新建一个OAuth App</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605163226139.png" alt="image-20240605163226139"></p>
+<ul>
+<li><p>Application name：比如nezha</p>
+</li>
+<li><p>Homepage URL：<a target="_blank" rel="noopener" href="http://probe.liucf.top:8008/">http://probe.liucf.top:8008</a></p>
+</li>
+<li><p>Application description：可空着</p>
+</li>
+<li><p>Authorization callback URL：<a target="_blank" rel="noopener" href="http://probe.liucf.top:8008/oauth2/callback">http://probe.liucf.top:8008/oauth2/callback</a></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605171030134.png" alt="image-20240605171030134"></p>
+</li>
+</ul>
+</li>
+<li><p>申请应用后，获取Client ID和Client secrets</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605171821698.png" alt="image-20240605171821698"></p>
+<br></li>
+</ol>
+<h2 id="安装哪吒监控"><a href="#安装哪吒监控" class="headerlink" title="安装哪吒监控"></a>安装哪吒监控</h2><p>进入主vps安装脚本（主服务器）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -o nezha.sh &amp;&amp; <span class="built_in">chmod</span> +x nezha.sh &amp;&amp; sudo ./nezha.sh</span><br></pre></td></tr></table></figure>
+
+<p>接着选择1，使用Docker安装：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605172944263.png" alt="image-20240605172944263"></p>
+<p>然后选择1，安装面板端：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605173036680.png" alt="image-20240605173036680"></p>
+<p>等待Docker安装完毕后，分别输入以下值：</p>
+<p>  <code>OAuth提供商</code> - Github，Gitlab，Jihulab，Gitee 中选择一个</p>
+<p>  <code>Client ID</code> - 之前保存的 Client ID</p>
+<p>  <code>Client Secret</code> - 之前保存的密钥</p>
+<p>  <code>用户名</code> - OAuth 提供商中的用户名</p>
+<p>  <code>站点标题</code> - 自定义站点标题</p>
+<p>  <code>访问端口</code> - 公开访问端口，可自定义，默认 8008</p>
+<p>  <code>Agent的通信端口</code> - Agent与Dashboard的通信端口，默认 5555</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605173340777.png" alt="image-20240605173340777"></p>
+<p>到这里已经安装完成了：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605173422587.png" alt="image-20240605173422587"></p>
+<p><strong>安装完面板之后回到GitHub刚才申请的那个nezha应用，取消8008端口，因为已经被反代了。</strong></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605173517802.png" alt="image-20240605173517802"></p>
+<br>
+
+<h2 id="登录面板"><a href="#登录面板" class="headerlink" title="登录面板"></a>登录面板</h2><p><img src="https://img.liuyueyue.top//xlimage-20240605173721255.png" alt="image-20240605173721255"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605173836927.png" alt="image-20240605173836927"></p>
+<p>进入管理后台，进行设置：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605174058312.png" alt="image-20240605174058312"></p>
+<p>先去设置一下面板，把之前解析的另外一个agent.liucf.top 填入未接入CDN的面板服务器域名&#x2F;IP这里，然后确定：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605174750646.png" alt="image-20240605174750646"></p>
+<p>修改主题，这种显示响应曲线看起来方便一些：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605174824970.png" alt="image-20240605174824970"></p>
+<p>保存设置后，新增服务器监控，先为主服务器添加监控：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605174919430.png" alt="image-20240605174919430"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605175048841.png" alt="image-20240605175048841"></p>
+<p>复制这个linux的脚本命令，回到ssh输入，如果没有sudo，建议删除里面的sudo进行安装：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605175154472.png" alt="image-20240605175154472"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -o nezha.sh &amp;&amp; <span class="built_in">chmod</span> +x nezha.sh &amp;&amp; sudo ./nezha.sh install_agent agent.liucf.top 5555 Sj08S0rQUW4fvtbleO</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240605175358485.png" alt="image-20240605175358485"></p>
+<p>回到前台查看安装情况：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240605175655677.png" alt="image-20240605175655677"></p>
+<p>至此，已经完成了安装，更多配置可以看我的参考文章和官方文档。</p>
+<br>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>进入主vps，输入以下命令更新，选择5更新最新版本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./nezha.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240605175819942.png" alt="image-20240605175819942"></p>
+<br>
+
+<br>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://moreopen.cc/1888.html">Docker，Nginx Proxy Manager 一站式部署哪吒监控 - MOREOPEN</a></p>
+<p><a target="_blank" rel="noopener" href="https://nezha.wiki/guide/dashboard.html">安装 Dashboard | 哪吒监控 (nezha.wiki)</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Stargaze
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://liuyueyue.top/posts/2024/06/04/2264994534.html" title="Docker安装哪吒监控">http://liuyueyue.top/posts/2024/06/04/2264994534.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+              <a href="/tags/%E6%8E%A2%E9%92%88/" rel="tag"># 探针</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2024/06/04/3926299118.html" rel="prev" title="Debian12安装Docker">
+                  <i class="fa fa-angle-left"></i> Debian12安装Docker
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2024/10/22/3173242249.html" rel="next" title="今日总结">
+                  今日总结 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+
+    <span class="author" itemprop="copyrightHolder">Stargaze</span>
+
+
+  </div>
+<div class="busuanzi-count">
+
+</div>
+
+
+<!-- <br /> -->
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/27/2023 17:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+    }
+//+hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+setInterval("createtime()",250);
+</script>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鄂ICP备2023003756号-2 </a>
+  </div>
+
+<div>
+    本网站由<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><div style="display:inline-block; margin-top: 5px;"><img src="https://img.xljyaone.top//xl%E9%8D%99%E5%A0%9F%E5%AA%BF%E6%B5%9C%E6%85%B1logo2.png" height="15px" width="40px" /></div></a>提供CDN加速/云存储服务
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.liuyueyue.top","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"发表评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":["nick"],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/posts/2024/06/04/2264994534.html"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@waline/client@v2/dist/waline-meta.css"
+/>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

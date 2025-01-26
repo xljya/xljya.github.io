@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>StargazeのBlog</title>
+  <icon>http://liuyueyue.top/icon.png</icon>
+  <subtitle>Code simulation world</subtitle>
+  <link href="http://liuyueyue.top/atom.xml" rel="self"/>
+  
+  <link href="http://liuyueyue.top/"/>
+  <updated>2025-01-23T07:03:01.982Z</updated>
+  <id>http://liuyueyue.top/</id>
+  
+  <author>
+    <name>Stargaze</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用bypy实现百度云盘文件上传与下载</title>
+    <link href="http://liuyueyue.top/posts/2025/01/23/1661508139.html"/>
+    <id>http://liuyueyue.top/posts/2025/01/23/1661508139.html</id>
+    <published>2025-01-23T06:59:41.000Z</published>
+    <updated>2025-01-23T07:03:01.982Z</updated>
+    
+    
+    <summary type="html">使用bypy实现百度云盘文件上传与下载。</summary>
+    
+    
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="实用工具" scheme="http://liuyueyue.top/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Spring Boot的健身房场馆预约系统</title>
+    <link href="http://liuyueyue.top/posts/2024/10/30/1262640889.html"/>
+    <id>http://liuyueyue.top/posts/2024/10/30/1262640889.html</id>
+    <published>2024-10-30T08:32:15.000Z</published>
+    <updated>2024-11-19T18:49:54.088Z</updated>
+    
+    
+    <summary type="html">记录一下毕业论文完成的过程。</summary>
+    
+    
+    
+    <category term="毕业论文" scheme="http://liuyueyue.top/categories/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="毕业论文" scheme="http://liuyueyue.top/tags/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>今日总结</title>
+    <link href="http://liuyueyue.top/posts/2024/10/22/3173242249.html"/>
+    <id>http://liuyueyue.top/posts/2024/10/22/3173242249.html</id>
+    <published>2024-10-22T06:19:27.000Z</published>
+    <updated>2024-10-22T17:27:39.979Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2024.10.22总结&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="每日总结" scheme="http://liuyueyue.top/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="每日总结" scheme="http://liuyueyue.top/tags/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker安装哪吒监控</title>
+    <link href="http://liuyueyue.top/posts/2024/06/04/2264994534.html"/>
+    <id>http://liuyueyue.top/posts/2024/06/04/2264994534.html</id>
+    <published>2024-06-04T09:35:25.000Z</published>
+    <updated>2024-06-05T10:00:21.202Z</updated>
+    
+    
+    <summary type="html">记录一下Docker安装哪吒监控的过程。</summary>
+    
+    
+    
+    <category term="Docker" scheme="http://liuyueyue.top/categories/Docker/"/>
+    
+    
+    <category term="Docker" scheme="http://liuyueyue.top/tags/Docker/"/>
+    
+    <category term="探针" scheme="http://liuyueyue.top/tags/%E6%8E%A2%E9%92%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Debian12安装Docker</title>
+    <link href="http://liuyueyue.top/posts/2024/06/04/3926299118.html"/>
+    <id>http://liuyueyue.top/posts/2024/06/04/3926299118.html</id>
+    <published>2024-06-04T03:28:29.000Z</published>
+    <updated>2024-06-04T07:35:38.785Z</updated>
+    
+    
+    <summary type="html">记录一下在Debian12安装Docker的过程。</summary>
+    
+    
+    
+    <category term="Docker" scheme="http://liuyueyue.top/categories/Docker/"/>
+    
+    
+    <category term="Linux" scheme="http://liuyueyue.top/tags/Linux/"/>
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="Debian" scheme="http://liuyueyue.top/tags/Debian/"/>
+    
+    <category term="Docker" scheme="http://liuyueyue.top/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker安装Nginx Proxy Manager</title>
+    <link href="http://liuyueyue.top/posts/2024/06/04/3539346108.html"/>
+    <id>http://liuyueyue.top/posts/2024/06/04/3539346108.html</id>
+    <published>2024-06-04T03:16:47.000Z</published>
+    <updated>2024-06-04T09:09:32.366Z</updated>
+    
+    
+    <summary type="html">使用Docker安装一下npm。</summary>
+    
+    
+    
+    <category term="Docker" scheme="http://liuyueyue.top/categories/Docker/"/>
+    
+    
+    <category term="Docker" scheme="http://liuyueyue.top/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Debian12安装Nginx</title>
+    <link href="http://liuyueyue.top/posts/2024/05/14/1079937748.html"/>
+    <id>http://liuyueyue.top/posts/2024/05/14/1079937748.html</id>
+    <published>2024-05-14T07:33:41.000Z</published>
+    <updated>2024-06-04T07:35:38.785Z</updated>
+    
+    
+    <summary type="html">记录一下Debian12安装Nginx的过程。</summary>
+    
+    
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="Linux" scheme="http://liuyueyue.top/tags/Linux/"/>
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="Debian" scheme="http://liuyueyue.top/tags/Debian/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Debian12安装MySQL</title>
+    <link href="http://liuyueyue.top/posts/2024/05/12/3886968423.html"/>
+    <id>http://liuyueyue.top/posts/2024/05/12/3886968423.html</id>
+    <published>2024-05-12T15:12:02.000Z</published>
+    <updated>2024-06-04T07:35:38.770Z</updated>
+    
+    
+    <summary type="html">记录一下Debian12安装MySQL的过程。</summary>
+    
+    
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="Linux" scheme="http://liuyueyue.top/tags/Linux/"/>
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="Debian" scheme="http://liuyueyue.top/tags/Debian/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>云服务器一键DD重装</title>
+    <link href="http://liuyueyue.top/posts/2024/04/22/3587609196.html"/>
+    <id>http://liuyueyue.top/posts/2024/04/22/3587609196.html</id>
+    <published>2024-04-22T09:19:03.000Z</published>
+    <updated>2024-06-04T03:00:11.111Z</updated>
+    
+    
+    <summary type="html">重装一下云服务器的系统。</summary>
+    
+    
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="Linux" scheme="http://liuyueyue.top/tags/Linux/"/>
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="Debian" scheme="http://liuyueyue.top/tags/Debian/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第二次被网络诈骗经历</title>
+    <link href="http://liuyueyue.top/posts/2024/03/03/194345054.html"/>
+    <id>http://liuyueyue.top/posts/2024/03/03/194345054.html</id>
+    <published>2024-03-03T15:49:16.000Z</published>
+    <updated>2024-03-09T18:52:59.474Z</updated>
+    
+    
+    <summary type="html">这是一篇加密文章，内容可能是个人隐私。</summary>
+    
+    
+    
+    <category term="被骗经历" scheme="http://liuyueyue.top/categories/%E8%A2%AB%E9%AA%97%E7%BB%8F%E5%8E%86/"/>
+    
+    
+    <category term="网络诈骗" scheme="http://liuyueyue.top/tags/%E7%BD%91%E7%BB%9C%E8%AF%88%E9%AA%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux搭建JavaEE环境</title>
+    <link href="http://liuyueyue.top/posts/2024/02/07/145460297.html"/>
+    <id>http://liuyueyue.top/posts/2024/02/07/145460297.html</id>
+    <published>2024-02-07T08:52:08.000Z</published>
+    <updated>2024-02-15T14:14:10.478Z</updated>
+    
+    
+    <summary type="html">简单记录一下Linux搭建JavaEE环境的过程。</summary>
+    
+    
+    
+    <category term="虚拟机" scheme="http://liuyueyue.top/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+    <category term="Linux" scheme="http://liuyueyue.top/tags/Linux/"/>
+    
+    <category term="Java" scheme="http://liuyueyue.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>国内Linux云服务器高速下载GitHub</title>
+    <link href="http://liuyueyue.top/posts/2024/01/26/2525754687.html"/>
+    <id>http://liuyueyue.top/posts/2024/01/26/2525754687.html</id>
+    <published>2024-01-26T11:49:19.000Z</published>
+    <updated>2024-01-26T12:23:03.984Z</updated>
+    
+    
+    <summary type="html">解决国内Linux云服务器下载github文件慢的问题。</summary>
+    
+    
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="Linux" scheme="http://liuyueyue.top/tags/Linux/"/>
+    
+    <category term="云服务器" scheme="http://liuyueyue.top/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>今日总结</title>
+    <link href="http://liuyueyue.top/posts/2023/12/21/3173242249.html"/>
+    <id>http://liuyueyue.top/posts/2023/12/21/3173242249.html</id>
+    <published>2023-12-20T17:12:59.000Z</published>
+    <updated>2023-12-20T17:14:15.747Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2023.12.20总结&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="每日总结" scheme="http://liuyueyue.top/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="每日总结" scheme="http://liuyueyue.top/tags/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一次被网络诈骗经历</title>
+    <link href="http://liuyueyue.top/posts/2023/12/20/1133649470.html"/>
+    <id>http://liuyueyue.top/posts/2023/12/20/1133649470.html</id>
+    <published>2023-12-20T11:40:24.000Z</published>
+    <updated>2024-03-03T18:14:37.661Z</updated>
+    
+    
+    <summary type="html">这是一篇加密文章，内容可能是个人隐私。</summary>
+    
+    
+    
+    <category term="被骗经历" scheme="http://liuyueyue.top/categories/%E8%A2%AB%E9%AA%97%E7%BB%8F%E5%8E%86/"/>
+    
+    
+    <category term="网络诈骗" scheme="http://liuyueyue.top/tags/%E7%BD%91%E7%BB%9C%E8%AF%88%E9%AA%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>申请美国自由大学教育邮箱</title>
+    <link href="http://liuyueyue.top/posts/2023/12/20/4133790210.html"/>
+    <id>http://liuyueyue.top/posts/2023/12/20/4133790210.html</id>
+    <published>2023-12-20T11:37:49.000Z</published>
+    <updated>2024-05-14T07:41:32.303Z</updated>
+    
+    
+    <summary type="html">申请美国自由大学教育邮箱。</summary>
+    
+    
+    
+    <category term="薅羊毛" scheme="http://liuyueyue.top/categories/%E8%96%85%E7%BE%8A%E6%AF%9B/"/>
+    
+    
+    <category term="教育邮箱" scheme="http://liuyueyue.top/tags/%E6%95%99%E8%82%B2%E9%82%AE%E7%AE%B1/"/>
+    
+    <category term="薅羊毛" scheme="http://liuyueyue.top/tags/%E8%96%85%E7%BE%8A%E6%AF%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生活感悟</title>
+    <link href="http://liuyueyue.top/posts/2023/12/14/2187756013.html"/>
+    <id>http://liuyueyue.top/posts/2023/12/14/2187756013.html</id>
+    <published>2023-12-14T08:01:48.000Z</published>
+    <updated>2023-12-14T09:13:02.547Z</updated>
+    
+    
+    <summary type="html">这是一篇加密文章，内容可能是个人隐私。</summary>
+    
+    
+    
+    <category term="生活感悟" scheme="http://liuyueyue.top/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/"/>
+    
+    
+    <category term="生活感悟" scheme="http://liuyueyue.top/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>进制转换</title>
+    <link href="http://liuyueyue.top/posts/2023/12/09/2110329172.html"/>
+    <id>http://liuyueyue.top/posts/2023/12/09/2110329172.html</id>
+    <published>2023-12-09T09:38:42.000Z</published>
+    <updated>2024-06-04T07:51:57.514Z</updated>
+    
+    
+    <summary type="html">记录一下常用进制转换的方法。</summary>
+    
+    
+    
+    <category term="数据结构与算法" scheme="http://liuyueyue.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="刷题日常" scheme="http://liuyueyue.top/tags/%E5%88%B7%E9%A2%98%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一次刮毛</title>
+    <link href="http://liuyueyue.top/posts/2023/12/07/963464495.html"/>
+    <id>http://liuyueyue.top/posts/2023/12/07/963464495.html</id>
+    <published>2023-12-06T16:11:07.000Z</published>
+    <updated>2023-12-06T16:51:56.190Z</updated>
+    
+    
+    <summary type="html">这是一篇加密文章，内容可能是个人隐私。</summary>
+    
+    
+    
+    <category term="个人隐私" scheme="http://liuyueyue.top/categories/%E4%B8%AA%E4%BA%BA%E9%9A%90%E7%A7%81/"/>
+    
+    
+    <category term="个人隐私" scheme="http://liuyueyue.top/tags/%E4%B8%AA%E4%BA%BA%E9%9A%90%E7%A7%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>今日总结</title>
+    <link href="http://liuyueyue.top/posts/2023/12/07/3173242251.html"/>
+    <id>http://liuyueyue.top/posts/2023/12/07/3173242251.html</id>
+    <published>2023-12-06T16:09:58.000Z</published>
+    <updated>2023-12-06T16:37:04.949Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2023.12.6总结&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="每日总结" scheme="http://liuyueyue.top/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="每日总结" scheme="http://liuyueyue.top/tags/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>今日总结</title>
+    <link href="http://liuyueyue.top/posts/2023/12/05/3173242250.html"/>
+    <id>http://liuyueyue.top/posts/2023/12/05/3173242250.html</id>
+    <published>2023-12-04T16:39:10.000Z</published>
+    <updated>2023-12-20T13:40:12.830Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2023.12.4总结&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="每日总结" scheme="http://liuyueyue.top/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="每日总结" scheme="http://liuyueyue.top/tags/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+</feed>
