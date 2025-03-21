@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yl-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yl-16x16-next.png">
+  <link rel="mask-icon" href="/images/yl.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liuyueyue.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterance","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="VPS制作种子和发布的教程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPS制作种子和发布">
+<meta property="og:url" content="http://liuyueyue.top/posts/2025/01/26/1732245461.html">
+<meta property="og:site_name" content="StargazeのBlog">
+<meta property="og:description" content="VPS制作种子和发布的教程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/002f098e9c09ea105df2c03974a2da83.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/23c563fcbc3fd8791e871f7854c8dd5e.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/193dc41db715fa785b945eb88441c2a5.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/dafff15db0a0e7631d8c9fae46ea4107.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/2af63f0c640109779d2b4792550b5477.png">
+<meta property="article:published_time" content="2025-01-25T16:21:31.000Z">
+<meta property="article:modified_time" content="2025-01-26T08:37:04.737Z">
+<meta property="article:author" content="Stargaze">
+<meta property="article:tag" content="PT">
+<meta property="article:tag" content="VPS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.liucf.com/images/2025/01/002f098e9c09ea105df2c03974a2da83.png">
+
+
+<link rel="canonical" href="http://liuyueyue.top/posts/2025/01/26/1732245461.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://liuyueyue.top/posts/2025/01/26/1732245461.html","path":"posts/2025/01/26/1732245461.html","title":"VPS制作种子和发布"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>VPS制作种子和发布 | StargazeのBlog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?b343d7c07a907567847b3f01f10d0ddf"></script>
+
+
+
+
+
+  <script async defer data-website-id="de8fc437-0b80-405d-a60e-df690adf33b4" src="https://umami.liuyueyue.top/script.js" data-host-url="https://umami.liuyueyue.top/"></script>
+
+<link rel="dns-prefetch" href="comment.liuyueyue.top">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="StargazeのBlog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">StargazeのBlog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code simulation world</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章列表</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%8D%E5%AD%90%E5%88%B6%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">种子制作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Transmission"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Transmission</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%92%8C%E4%BF%9D%E5%AD%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">修改和保存配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">制作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%8D%E5%AD%90%E5%8F%91%E5%B8%83"><span class="nav-number">3.</span> <span class="nav-text">种子发布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%8D%E5%AD%90%E4%B8%8B%E8%BD%BD%E5%92%8C%E8%BE%85%E7%A7%8D"><span class="nav-number">4.</span> <span class="nav-text">种子下载和辅种</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0"><span class="nav-number">4.1.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C"><span class="nav-number">4.2.</span> <span class="nav-text">检验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Stargaze"
+      src="/images/preview.jpg">
+  <p class="site-author-name" itemprop="name">Stargaze</p>
+  <div class="site-description" itemprop="description">一个什么都想学的新手</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:lcfjya@gmail.com" title="E-Mail → mailto:lcfjya@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/xlbbd" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;xlbbd" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/xljya" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xljya" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=3857624959&site=qq&menu=yes&jumpflag=1" title="QQ → https:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;3857624959&amp;site&#x3D;qq&amp;menu&#x3D;yes&amp;jumpflag&#x3D;1" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://liuyueyue.top/posts/2025/01/26/1732245461.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/preview.jpg">
+      <meta itemprop="name" content="Stargaze">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StargazeのBlog">
+      <meta itemprop="description" content="一个什么都想学的新手">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="VPS制作种子和发布 | StargazeのBlog">
+      <meta itemprop="description" content="VPS制作种子和发布的教程。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VPS制作种子和发布
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-26 00:21:31 / 修改时间：16:37:04" itemprop="dateCreated datePublished" datetime="2025-01-26T00:21:31+08:00">2025-01-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/PT/" itemprop="url" rel="index"><span itemprop="name">PT</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/2025/01/26/1732245461.html#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/posts/2025/01/26/1732245461.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>847</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">VPS制作种子和发布的教程。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这是一篇进入 PT 站后面向新手的教程，至于 PT 的简介，和怎么进入 PT 站就不进行描述了，自己 google 即可。</p>
+<p>说起来也挺有意思，写这篇教程之前，因为那时候在外地，所以我是用手机和平板上的 SSH 工具 Termius 来连接 vps 进行的操作。</p>
+<p>我的 vps 系统是 debian12。<br><br></p>
+<br>
+
+<h1 id="种子制作"><a href="#种子制作" class="headerlink" title="种子制作"></a>种子制作</h1><h2 id="安装-Transmission"><a href="#安装-Transmission" class="headerlink" title="安装 Transmission"></a>安装 Transmission</h2><p>Transmission 是一个轻量级的 BT 客户端，支持创建种子文件。首先，在 VPS 上安装 Transmission 和其后台守护进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install transmission transmission-daemon</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="修改和保存配置文件"><a href="#修改和保存配置文件" class="headerlink" title="修改和保存配置文件"></a>修改和保存配置文件</h2><p>为了方便使用，需要修改 Transmission 的配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /var/lib/transmission-daemon/.config/transmission-daemon/settings.json </span><br></pre></td></tr></table></figure>
+
+<p>修改以下内容：</p>
+<ul>
+<li>**<code>rpc-password</code>**：设置管理密码。</li>
+<li>**<code>rpc-username</code>**：设置管理用户名。</li>
+<li>**<code>rpc-whitelist-enabled</code>**：改为 <code>false</code>，关闭白名单（允许任何 IP 访问）。</li>
+</ul>
+<p>修改完成后，保存并退出编辑器。<br><img src="https://image.liucf.com/images/2025/01/002f098e9c09ea105df2c03974a2da83.png" alt="image.png|300"></p>
+<p><strong>重新加载配置：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload transmission-daemon  <span class="comment">#遇到web界面出现403错误也可以重新加载配置解决</span></span><br></pre></td></tr></table></figure>
+
+<p>安装完毕后访问 Transmission 配置文件中指定的端口即可（默认是 9091）：<br><img src="https://image.liucf.com/images/2025/01/23c563fcbc3fd8791e871f7854c8dd5e.png" alt="image.png|300"><br><br></p>
+<h2 id="制作"><a href="#制作" class="headerlink" title="制作"></a>制作</h2><p>到这一步我们就可以正常下种了，使用 <code>transmission-create</code> 命令即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transmission-create -p -t &lt;PT站的tracker地址&gt; -o &lt;种子文件名.torrent&gt; -s 2048 /var/lib/transmission-daemon/downloads/123 &amp;</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数解释</strong>：</p>
+<ul>
+<li><code>-p</code>：标记为私有种子（必须加）。</li>
+<li><code>-t</code>：指定 PT 站的 tracker 地址（自行替换成实际的 tracker 地址，一般可以在 pt 站的新手教程里找到）。</li>
+<li><code>-o</code>：指定生成的种子文件的保存路径和文件名，种子文件名（或要制作的文件夹）不能有特殊符号。</li>
+<li><code>-s</code>：文件块大小，单位为 KB。<code>2048</code> 表示 2MB。</li>
+<li>最后的路径 <code>/var/lib/transmission-daemon/downloads/123</code> 是源文件存放位置，可以是文件或目录，我一般会给整个目录加上””。</li>
+<li><code>&amp;</code>：让命令在后台运行，避免关闭 SSH 会中断操作。</li>
+</ul>
+<br>
+<br>
+
+<h1 id="种子发布"><a href="#种子发布" class="headerlink" title="种子发布"></a>种子发布</h1><p>将在PT站中选择发布页，并将信息正确地填写完整即可发布，<strong>新手等级一般只能发在候选区</strong>，这里借用参考链接中的图片：<br><img src="https://image.liucf.com/images/2025/01/193dc41db715fa785b945eb88441c2a5.png" alt="image.png|300"><br><br><br><br></p>
+<h1 id="种子下载和辅种"><a href="#种子下载和辅种" class="headerlink" title="种子下载和辅种"></a>种子下载和辅种</h1><p>辅种意思就是你本地资源和某个 PT 站的某个资源完全一样，然后你可以直接给这个资源辅种做种，不需要你从这个 PT 站下载这个资源再做种。</p>
+<p>一般发布完种子后还需要自己重新进行下载 (或复制种子连接)进行辅种，<strong>辅种最重要的是检验，保存位置需要是源文件的位置</strong>。</p>
+<h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><p>这里我使用的是 qBittorrent 来进行辅种，可以<strong>添加 Torrent链接或者添加 Torrent 文件</strong>：<br><img src="https://image.liucf.com/images/2025/01/dafff15db0a0e7631d8c9fae46ea4107.png" alt="image.png|300"><br><br></p>
+<h2 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h2><p>例如我的源文件是掌控安全学院，文件路径是 <code>/root/掌控安全学院</code>，我只需设置保存路径为  <code>/root/</code> 即可完成校验，直接开始做种：<br><img src="https://image.liucf.com/images/2025/01/2af63f0c640109779d2b4792550b5477.png" alt="image.png|300"></p>
+<ul>
+<li>辅种的时候本地原始视频文件不能删除。</li>
+</ul>
+<br>
+<br>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.hgtrojan.com/index.php/archives/400/">VPS在线做PT种教程 - HgTrojan</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/639414720861831171">PT站种子制作发布新手全攻略 - 哔哩哔哩</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ptyqm.com/31334.html">PT站点名词解释之-辅种，如何免校验进行辅种？ | PT邀请码网</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Stargaze
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://liuyueyue.top/posts/2025/01/26/1732245461.html" title="VPS制作种子和发布">http://liuyueyue.top/posts/2025/01/26/1732245461.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/PT/" rel="tag"># PT</a>
+              <a href="/tags/VPS/" rel="tag"># VPS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2025/01/23/1661508139.html" rel="prev" title="使用bypy实现百度云盘文件上传与下载">
+                  <i class="fa fa-angle-left"></i> 使用bypy实现百度云盘文件上传与下载
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2025/02/16/3985416481.html" rel="next" title="使用Oh My Zsh美化终端">
+                  使用Oh My Zsh美化终端 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+
+    <span class="author" itemprop="copyrightHolder">Stargaze</span>
+
+
+  </div>
+<div class="busuanzi-count">
+
+</div>
+
+
+<!-- <br /> -->
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/27/2023 17:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+    }
+//+hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+setInterval("createtime()",250);
+</script>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鄂ICP备2023003756号-2 </a>
+  </div>
+
+<div>
+    本网站由<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><div style="display:inline-block; margin-top: 5px;"><img src="https://image.liucf.com/images/2025/03/4ff5b7d3ed727d330fcdda17165de906.png" height="15px" /></div></a>提供CDN加速/云存储服务
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.liuyueyue.top","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"发表评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":["nick"],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/posts/2025/01/26/1732245461.html"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@waline/client@v2/dist/waline-meta.css"
+/>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yl-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yl-16x16-next.png">
+  <link rel="mask-icon" href="/images/yl.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liuyueyue.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterance","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="总结了一下自己在刷题过程中遇到的输入输出问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刷题中的输入输出汇总">
+<meta property="og:url" content="http://liuyueyue.top/posts/2023/11/23/1962820535.html">
+<meta property="og:site_name" content="StargazeのBlog">
+<meta property="og:description" content="总结了一下自己在刷题过程中遇到的输入输出问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123204833259.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123213506775.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123212419425.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123212801199.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123214216775.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231123234809060.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20231129232147258.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlxlimage-20231123212419425.png">
+<meta property="article:published_time" content="2023-11-23T12:31:28.000Z">
+<meta property="article:modified_time" content="2024-06-04T07:52:58.838Z">
+<meta property="article:author" content="Stargaze">
+<meta property="article:tag" content="刷题日常">
+<meta property="article:tag" content="刷题总结">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.liuyueyue.top//xlimage-20231123204833259.png">
+
+
+<link rel="canonical" href="http://liuyueyue.top/posts/2023/11/23/1962820535.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://liuyueyue.top/posts/2023/11/23/1962820535.html","path":"posts/2023/11/23/1962820535.html","title":"刷题中的输入输出汇总"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>刷题中的输入输出汇总 | StargazeのBlog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?b343d7c07a907567847b3f01f10d0ddf"></script>
+
+
+
+
+
+  <script async defer data-website-id="de8fc437-0b80-405d-a60e-df690adf33b4" src="https://umami.liuyueyue.top/script.js" data-host-url="https://umami.liuyueyue.top/"></script>
+
+<link rel="dns-prefetch" href="comment.liuyueyue.top">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="StargazeのBlog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">StargazeのBlog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code simulation world</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章列表</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">前记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">前置知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Scanner"><span class="nav-number">2.1.</span> <span class="nav-text">Scanner</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BufferedReader"><span class="nav-number">2.2.</span> <span class="nav-text">BufferedReader</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5"><span class="nav-number">3.</span> <span class="nav-text">输入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E6%95%B0%E6%8D%AE%E4%B8%AA%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">明确数据个数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">3.1.1.</span> <span class="nav-text">一维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">3.1.2.</span> <span class="nav-text">二维数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E6%98%8E%E7%A1%AE%E6%95%B0%E6%8D%AE%E4%B8%AA%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">不明确数据个数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%85%A5"><span class="nav-number">3.2.1.</span> <span class="nav-text">直接输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">一维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">二维数组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">4.</span> <span class="nav-text">输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BB%84%E8%BE%93%E5%85%A5%E5%A4%9A%E7%BB%84%E8%BE%93%E5%85%A5"><span class="nav-number">4.1.</span> <span class="nav-text">多组输入多组输入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Stargaze"
+      src="/images/preview.jpg">
+  <p class="site-author-name" itemprop="name">Stargaze</p>
+  <div class="site-description" itemprop="description">一个什么都想学的新手</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:lcfjya@gmail.com" title="E-Mail → mailto:lcfjya@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/xlbbd" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;xlbbd" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/xljya" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xljya" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=3857624959&site=qq&menu=yes&jumpflag=1" title="QQ → https:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;3857624959&amp;site&#x3D;qq&amp;menu&#x3D;yes&amp;jumpflag&#x3D;1" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://liuyueyue.top/posts/2023/11/23/1962820535.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/preview.jpg">
+      <meta itemprop="name" content="Stargaze">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StargazeのBlog">
+      <meta itemprop="description" content="一个什么都想学的新手">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="刷题中的输入输出汇总 | StargazeのBlog">
+      <meta itemprop="description" content="总结了一下自己在刷题过程中遇到的输入输出问题。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          刷题中的输入输出汇总
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-23 20:31:28" itemprop="dateCreated datePublished" datetime="2023-11-23T20:31:28+08:00">2023-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-04 15:52:58" itemprop="dateModified" datetime="2024-06-04T15:52:58+08:00">2024-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/2023/11/23/1962820535.html#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/posts/2023/11/23/1962820535.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">总结了一下自己在刷题过程中遇到的输入输出问题。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h1><p>因为还要备战第二次蓝桥杯和为了以后的算法笔试，所以我准备汇总一下刷题过程中遇到的输入和输出情况，可能这篇文章会随着我刷题量而不断更新。</p>
+<br>
+
+<br>
+
+
+
+<h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>java常用的输入方式有四种（System.in,Scanner,InputStreamReader,BufferesReader），这里一般我们常用的是Scanner或者BufferesReader，我只介绍这两种。</p>
+<h2 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h2><p>java.util.Scanner是Java5的新特征，主要功能是简化文本扫描，这个类最实用的地方表现在获取控制台输入。当通过new Scanner(System.in)创建一个Scanner，控制台会一直等待输入，直到敲回车键结束，把所输入的内容传给Scanner，作为扫描对象。如果要获取输入的内容，则只需要调用Scanner的nextLine()方法即可。</p>
+<p>Scanner也可以从字符串（Readable）、输入流、文件等等来直接构建Scanner对象，有了Scanner了，就可以逐段（根据正则分隔式）来扫描整个文本，并对扫描后的结果做想要的处理。</p>
+<p><strong><code>Scanner</code> 类的 <code>nextInt()</code> 方法实际上是从标准输入流中读取文本数据，并尝试将其解析为整数。</strong></p>
+<p><strong>控制台扫描：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> in.nextLine();</span><br><span class="line">    <span class="keyword">if</span> (line.equals(<span class="string">&quot;exit&quot;</span>)) <span class="keyword">break</span>;          <span class="comment">//如果输入为&quot;exit&quot;，则退出</span></span><br><span class="line">    System.out.println(<span class="string">&quot;输入：&quot;</span> + line);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Scanner默认使用空格作为分割符来分隔文本，但允许你指定新的分隔符：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(<span class="string">&quot;123 asdf sd 45 789 sdf asdfl,sdf.sdfl,asdf    ......asdfkl    las&quot;</span>);</span><br><span class="line"><span class="comment">// 以自己制定方式分割文本，支持正则表达式</span></span><br><span class="line"><span class="comment">//sc.useDelimiter(&quot; |,|\\.&quot;);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">    System.out.println(sc.next());</span><br><span class="line">    <span class="comment">//会以空格为间隔依次输出上面的字符串</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>重要api：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Pattern <span class="title function_">delimiter</span> <span class="params">()</span>  <span class="comment">//返回此 Scanner 当前正在用于匹配分隔符的 Pattern。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span> <span class="params">()</span>   <span class="comment">//判断扫描器中当前扫描位置后是否还存在下一段。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNextLine</span> <span class="params">()</span>   <span class="comment">//如果在此扫描器的输入中存在另一行，则返回 true。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">next</span> <span class="params">()</span>        <span class="comment">//查找并返回来自此扫描器的下一个完整标记。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">nextLine</span> <span class="params">()</span>    <span class="comment">// 此扫描器执行当前行，并返回跳过的输入信息。</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">nextInt</span> <span class="params">()</span>       <span class="comment">//扫描下一个整数，依次类推还有Double、Floate、Long等</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h2><p>BufferedReader 从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。（通常和InputStreamReader连用，因为输入的数据是字节流，需要InputStreamReader将其转成成字符流）</p>
+<p><strong>常用构造：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BufferedReader br=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line"><span class="comment">//这行代码创建了一个能够从标准输入读取数据的 BufferedReader 对象，并将其存储在变量 br 中。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>对应解释：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">System.in</span><br><span class="line"><span class="comment">//System.in 是 Java 中的一个标准输入流，通常用于从控制台（键盘）读取用户输入。它是一个InputStream 对象，用于读取字节数据。</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in);</span><br><span class="line"><span class="comment">//构造一个InputStreamReader对象这个对象是字节流通向字符流的桥梁：它使用指定的 charset 读取字节并将其解码为字符。</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line"><span class="comment">//构造一个字符流的缓存，里面存放在控制台输入的字节转换后成的字符。</span></span><br><span class="line">str=bf.readLine();</span><br><span class="line"><span class="comment">//从这个缓存中读取一行的内容</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//整个这句话拆开来写为：</span></span><br><span class="line"><span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span> System.in ;</span><br><span class="line"><span class="type">InputStreamReader</span> <span class="variable">isr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in);</span><br><span class="line"><span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(isr);</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h1 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h1><h2 id="明确数据个数"><a href="#明确数据个数" class="headerlink" title="明确数据个数"></a>明确数据个数</h2><h3 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h3><p>对于样例数据，如果题目要求的<strong>处理方式都是一样</strong>的，且<strong>给定了数据的个数</strong>，那么我们就能创建一个一维数组来解决。</p>
+<p><strong>示例一：</strong></p>
+<p>输入包括两行数据。第一行包含10个100到200之间（包括100和200）的整数（以厘米为单位）分别表示10个苹果到地面的高度，两个相邻的整数之间用一个空格隔开。第二行只包括一个100到120之间（包含100和120）的整数（以厘米为单位），表示陶陶把手伸直的时候能够达到的最大高度。</p>
+<br>
+
+<p><strong>示例二：</strong></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123204833259.png" alt="image-20231123204833259"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">36</span>;</span><br><span class="line"><span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    a[i] = scanner.nextInt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h3 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h3><p><strong>示例一：</strong></p>
+<p>对于二维数组，而且<strong>样例中没有空格</strong>的时候，我们一般可以两层for循环输入，或者一层for循环，<strong>将每一行输入转换成一个字符数组。</strong></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123213506775.png" alt="image-20231123213506775"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">s[i] = (<span class="string">&quot; &quot;</span> + scanner.next()).toCharArray();  </span><br><span class="line"><span class="comment">//从下标1开始</span></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<p><strong>示例二：</strong></p>
+<p><strong>样例中出现空格时候</strong>，我们一般用二维数组接收(<strong>因为next()不接收空格</strong>)即可。</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">5 </span><span class="number">6</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br><span class="line"><span class="symbol">0 </span><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">        <span class="type">char</span>[][] arr = <span class="keyword">new</span> <span class="title class_">char</span>[m][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span><span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                arr[i][j] = in.next().charAt(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//或者直接用整数接收,看个人习惯</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>示例三：</strong></p>
+<p><strong>样例没有空格，而且需要查找某一个具体数组值的时候。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"> C = in.nextInt();  <span class="comment">//列</span></span><br><span class="line"> R = in.nextInt();  <span class="comment">//行</span></span><br><span class="line"><span class="type">int</span> x=-<span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> y=-<span class="number">1</span>;</span><br><span class="line">in.nextLine();   <span class="comment">//吃掉前面输入的回车</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; R; i++) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> in.nextLine();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; C; j++) &#123;</span><br><span class="line">        arr[i][j] = line.charAt(j);</span><br><span class="line">        <span class="keyword">if</span>(arr[i][j] == <span class="string">&#x27;K&#x27;</span>)&#123;</span><br><span class="line">            x = i;</span><br><span class="line">            y = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+
+
+<h2 id="不明确数据个数"><a href="#不明确数据个数" class="headerlink" title="不明确数据个数"></a>不明确数据个数</h2><p>在我们不明确输入的行数和个数的时候，经常会用到<b>while循环+hasNext()</b>判断。</p>
+<h3 id="直接输入"><a href="#直接输入" class="headerlink" title="直接输入"></a>直接输入</h3><p><img src="https://img.liuyueyue.top//xlimage-20231123212419425.png" alt="image-20231123212419425"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(sc.hasNext())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">N</span> <span class="operator">=</span> sc.nextDouble();</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (N &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            N /= <span class="number">2</span>;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(cnt);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h3 id="一维数组-1"><a href="#一维数组-1" class="headerlink" title="一维数组"></a>一维数组</h3><p><strong>示例一：</strong></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123212801199.png" alt="image-20231123212801199"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (in.hasNext()) &#123;</span><br><span class="line">    String[] a = in.nextLine().split(<span class="string">&quot;\\.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<p><strong>示例二：</strong></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123214216775.png" alt="image-20231123214216775"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (scanner.hasNext()) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">    scanner.nextLine();</span><br><span class="line"></span><br><span class="line">    String[] str = <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">10000</span>];</span><br><span class="line">    <span class="type">int</span> <span class="variable">realCount</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        str[i] = scanner.nextLine();</span><br><span class="line">        realCount++;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (str[i].equals(<span class="string">&quot;stop&quot;</span>)) &#123;</span><br><span class="line">            realCount--;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>示例三：</strong></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231123234809060.png" alt="image-20231123234809060"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式1:   </span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="comment">//将输入的内容添加到list</span></span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(in.nextLine());  <span class="comment">//输入换行结束,这个Scanner对象是读取in的内容，不是读取键盘了</span></span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            list.add(x);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式2:</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(in.nextLine());  <span class="comment">//输入换行结束,这个Scanner对象是读取in的内容，不是读取键盘了</span></span><br><span class="line">        <span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100005</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">            a[n] = sc.nextInt();</span><br><span class="line">            n++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//方式3:</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        String[] str = in.nextLine().split(<span class="string">&quot; &quot;</span>);  </span><br><span class="line"><span class="comment">//输入很细节，不确定数组长度时候使用,因为nextLine()遇到回车退出</span></span><br><span class="line">        <span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100005</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">            a[i+<span class="number">1</span>]=Integer.parseInt(str[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//a[1]=str[0]，a[2]=str[1].....</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h3 id="二维数组-1"><a href="#二维数组-1" class="headerlink" title="二维数组"></a>二维数组</h3><p><strong>示例一：</strong></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20231129232147258.png" alt="image-20231129232147258"></p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">6 9 </span><br><span class="line"><span class="string">....</span><span class="comment">#. </span></span><br><span class="line"><span class="string">.....</span><span class="comment"># </span></span><br><span class="line"><span class="string">......</span> </span><br><span class="line"><span class="string">......</span> </span><br><span class="line"><span class="string">......</span> </span><br><span class="line"><span class="string">......</span> </span><br><span class="line"><span class="string">......</span> </span><br><span class="line"><span class="comment">#@...# </span></span><br><span class="line">.<span class="comment">#..#. </span></span><br><span class="line">0 0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 正常输入</span></span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            n =in.nextInt();</span><br><span class="line">            m =in.nextInt();</span><br><span class="line">            <span class="keyword">if</span>(n==<span class="number">0</span> &amp;&amp;m==<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">                ct[i] = in.next().toCharArray();</span><br><span class="line">            &#125;</span><br><span class="line">  &#125;</span><br><span class="line">      </span><br><span class="line"><span class="comment">//2. 输入流输入</span></span><br><span class="line"><span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">       <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            String[] input = reader.readLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            n = Integer.parseInt(input[<span class="number">0</span>]);</span><br><span class="line">            m = Integer.parseInt(input[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">if</span> (n == <span class="number">0</span> &amp;&amp; m == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">                ct[i] = reader.readLine().toCharArray();</span><br><span class="line">            &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><p>基本都是难在输入，所以输出部分就没有什么内容…..</p>
+<h2 id="多组输入多组输入"><a href="#多组输入多组输入" class="headerlink" title="多组输入多组输入"></a>多组输入多组输入</h2><p>这种情况是最常见的，我们只需要不断读取每一行的内容，然后在循环末尾添加打印语句。</p>
+<p><img src="https://img.liuyueyue.top//xlxlimage-20231123212419425.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(sc.hasNext())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">N</span> <span class="operator">=</span> sc.nextDouble();</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (N &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            N /= <span class="number">2</span>;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(cnt);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36631076/article/details/77006007">java中的四大输入：System.in,Scanner,InputStreamReader,BufferesReader的用法与区别【改】-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wuha0/article/details/7336048">BufferedReader(new InputStreamReader(System.in));-CSDN博客</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Stargaze
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://liuyueyue.top/posts/2023/11/23/1962820535.html" title="刷题中的输入输出汇总">http://liuyueyue.top/posts/2023/11/23/1962820535.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%88%B7%E9%A2%98%E6%97%A5%E5%B8%B8/" rel="tag"># 刷题日常</a>
+              <a href="/tags/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/" rel="tag"># 刷题总结</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2023/11/18/1296248397.html" rel="prev" title="一元三次方程求实数根">
+                  <i class="fa fa-angle-left"></i> 一元三次方程求实数根
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2023/11/24/3876151684.html" rel="next" title="科学上网基础教程">
+                  科学上网基础教程 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+
+    <span class="author" itemprop="copyrightHolder">Stargaze</span>
+
+
+  </div>
+<div class="busuanzi-count">
+
+</div>
+
+
+<!-- <br /> -->
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/27/2023 17:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+    }
+//+hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+setInterval("createtime()",250);
+</script>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鄂ICP备2023003756号-2 </a>
+  </div>
+
+<div>
+    本网站由<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><div style="display:inline-block; margin-top: 5px;"><img src="https://image.liucf.com/images/2025/03/4ff5b7d3ed727d330fcdda17165de906.png" height="15px" /></div></a>提供CDN加速/云存储服务
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.liuyueyue.top","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"发表评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":["nick"],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/posts/2023/11/23/1962820535.html"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@waline/client@v2/dist/waline-meta.css"
+/>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

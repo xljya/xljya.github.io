@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yl-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yl-16x16-next.png">
+  <link rel="mask-icon" href="/images/yl.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liuyueyue.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterance","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="记录一下Debian12安装Nginx的过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Debian12安装Nginx">
+<meta property="og:url" content="http://liuyueyue.top/posts/2024/05/14/1079937748.html">
+<meta property="og:site_name" content="StargazeのBlog">
+<meta property="og:description" content="记录一下Debian12安装Nginx的过程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240514205043085.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240514205554733.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240514210102539.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240514213453449.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240514221108591.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515013303696.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515013825919.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240514224438415.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515172237944.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515014124128.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515014237588.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240514233857228.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515014806055.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515014949726.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515110617531.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515112152620.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515112701111.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515004556664.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515015130758.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515105242239.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515105448102.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240515105835781.png">
+<meta property="article:published_time" content="2024-05-14T07:33:41.000Z">
+<meta property="article:modified_time" content="2024-06-04T07:35:38.785Z">
+<meta property="article:author" content="Stargaze">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="云服务器">
+<meta property="article:tag" content="Debian">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.liuyueyue.top//xlimage-20240514205043085.png">
+
+
+<link rel="canonical" href="http://liuyueyue.top/posts/2024/05/14/1079937748.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://liuyueyue.top/posts/2024/05/14/1079937748.html","path":"posts/2024/05/14/1079937748.html","title":"Debian12安装Nginx"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Debian12安装Nginx | StargazeのBlog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?b343d7c07a907567847b3f01f10d0ddf"></script>
+
+
+
+
+
+  <script async defer data-website-id="de8fc437-0b80-405d-a60e-df690adf33b4" src="https://umami.liuyueyue.top/script.js" data-host-url="https://umami.liuyueyue.top/"></script>
+
+<link rel="dns-prefetch" href="comment.liuyueyue.top">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="StargazeのBlog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">StargazeのBlog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code simulation world</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章列表</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">3.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85gcc%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">3.1.</span> <span class="nav-text">安装gcc编译器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A3%E5%88%99%E5%BA%93"><span class="nav-number">3.2.</span> <span class="nav-text">安装正则库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85zlib%E5%BA%93"><span class="nav-number">3.3.</span> <span class="nav-text">安装zlib库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85OpenSSL%E5%BA%93"><span class="nav-number">3.4.</span> <span class="nav-text">安装OpenSSL库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDNginx%E6%BA%90%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">下载Nginx源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%92%8C%E7%BC%96%E8%AF%91"><span class="nav-number">5.</span> <span class="nav-text">配置和编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">6.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#systemctl"><span class="nav-number">6.1.</span> <span class="nav-text">systemctl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">6.2.</span> <span class="nav-text">环境变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">具体使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">7.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"><span class="nav-number">8.</span> <span class="nav-text">常见错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8"><span class="nav-number">8.1.</span> <span class="nav-text">端口被占用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD"><span class="nav-number">9.</span> <span class="nav-text">卸载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">10.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Stargaze"
+      src="/images/preview.jpg">
+  <p class="site-author-name" itemprop="name">Stargaze</p>
+  <div class="site-description" itemprop="description">一个什么都想学的新手</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:lcfjya@gmail.com" title="E-Mail → mailto:lcfjya@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/xlbbd" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;xlbbd" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/xljya" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xljya" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=3857624959&site=qq&menu=yes&jumpflag=1" title="QQ → https:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;3857624959&amp;site&#x3D;qq&amp;menu&#x3D;yes&amp;jumpflag&#x3D;1" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://liuyueyue.top/posts/2024/05/14/1079937748.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/preview.jpg">
+      <meta itemprop="name" content="Stargaze">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StargazeのBlog">
+      <meta itemprop="description" content="一个什么都想学的新手">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Debian12安装Nginx | StargazeのBlog">
+      <meta itemprop="description" content="记录一下Debian12安装Nginx的过程。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Debian12安装Nginx
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-14 15:33:41" itemprop="dateCreated datePublished" datetime="2024-05-14T15:33:41+08:00">2024-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-04 15:35:38" itemprop="dateModified" datetime="2024-06-04T15:35:38+08:00">2024-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">云服务器</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/2024/05/14/1079937748.html#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/posts/2024/05/14/1079937748.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">记录一下Debian12安装Nginx的过程。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​	还是因为最近在做项目，部署前端项目会用到Nginx，所以来记录一下安装的过程，我的安装方式是<strong>编译安装</strong>。</p>
+<p>​	我的设备是阿里云2核4G的云服务器，系统是DD之后的Debian12，远程连接工具是FinalShell。</p>
+<br>
+
+<br>
+
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Nginx（发音同engine x）是一个异步框架的 Web 服务器，也可以用作反向代理，负载平衡器 和 HTTP 缓存。该软件由 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BC%8A%E6%88%88%E7%88%BE%C2%B7%E8%B3%BD%E7%B4%A2%E8%80%B6%E5%A4%AB">Igor Sysoev</a> 创建，并于2004年首次公开发布。同名公司成立于2011年，以提供支持。</p>
+<p>Nginx 是一款免费的开源软件，根据类 BSD 许可证的条款发布。一大部分Web服务器使用 Nginx ，通常作为负载均衡器。</p>
+<br>
+
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>更快：<ul>
+<li>单次请求会得到更快的响应。</li>
+<li>在高并发环境下，Nginx 比其他 WEB 服务器有更快的响应。</li>
+</ul>
+</li>
+<li>高扩展性：<ul>
+<li>Nginx 是基于模块化设计，由多个耦合度极低的模块组成，因此具有很高的扩展性。许多高流量的网站都倾向于开发符合自己业务特性的定制模块。</li>
+</ul>
+</li>
+<li>高可靠性：<ul>
+<li>Nginx 的可靠性来自于其核心框架代码的优秀设计，模块设计的简单性。另外，官方提供的常用模块都非常稳定，每个 worker 进程相对独立，master 进程在一个 worker 进程出错时可以快速拉起新的 worker 子进程提供服务。</li>
+</ul>
+</li>
+<li>低内存消耗：<ul>
+<li>一般情况下，10000个非活跃的 <code>HTTP Keep-Alive</code> 连接在 Nginx 中仅消耗 <code>2.5MB</code> 的内存，这是 Nginx 支持高并发连接的基础。</li>
+<li>单机支持10万以上的并发连接：<strong>理论上，Nginx 支持的并发连接上限取决于内存，10万远未封顶。</strong></li>
+</ul>
+</li>
+<li>热部署:<ul>
+<li>master 进程与 worker 进程的分离设计，使得 Nginx 能够提供热部署功能，即在 7x24 小时不间断服务的前提下，升级 Nginx 的可执行文件。当然，它也支持不停止服务就更新配置项，更换日志文件等功能。</li>
+</ul>
+</li>
+<li>最自由的 BSD 许可协议:<ul>
+<li>这是 Nginx 可以快速发展的强大动力。BSD 许可协议不只是允许用户免费使用 Nginx ，它还允许用户在自己的项目中直接使用或修改 Nginx 源码，然后发布。</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<br>
+
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p><strong>编译安装时，需要自行安装：<code>gcc</code>、<code>pcre</code>、<code>zlib</code>以及<code>openssl</code></strong></p>
+<br>
+
+<h2 id="安装gcc编译器"><a href="#安装gcc编译器" class="headerlink" title="安装gcc编译器"></a>安装gcc编译器</h2><p>首先，我们需要安装gcc编译器用于<code>make</code>编译，Debian可以通过安装<code>build-essential</code>来安装GCC编译器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install -y build-essential</span><br><span class="line"></span><br><span class="line">apt show build-essential | grep Version  <span class="comment">#显示版本信息</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240514205043085.png" alt="image-20240514205043085"></p>
+<br>
+
+<h2 id="安装正则库"><a href="#安装正则库" class="headerlink" title="安装正则库"></a>安装正则库</h2><p>正则库很关键，我们使用Nginx，在配置文件内<code>location</code>进行目录匹配，就需要正则库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install -y libpcre3 libpcre3-dev</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240514205554733.png" alt="image-20240514205554733"></p>
+<br>
+
+<h2 id="安装zlib库"><a href="#安装zlib库" class="headerlink" title="安装zlib库"></a>安装zlib库</h2><p>Nginx编译过程和Http相应过程还需要<code>gzip</code>格式的压缩，所以我们还需要安装<code>zlib库</code>用于对HTTP包的内容做gzip格式的压缩。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install -y zlib1g-dev</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240514210102539.png" alt="image-20240514210102539"></p>
+<br>
+
+<h2 id="安装OpenSSL库"><a href="#安装OpenSSL库" class="headerlink" title="安装OpenSSL库"></a>安装OpenSSL库</h2><p>最后，现在SSL协议很重要，Chrome等主流浏览器，都开始默认相应HTTPS了，所以OpenSSL编译环境也很重要。</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240514213453449.png" alt="image-20240514213453449"></p>
+<br>
+
+<br>
+
+<h1 id="下载Nginx源码"><a href="#下载Nginx源码" class="headerlink" title="下载Nginx源码"></a>下载Nginx源码</h1><p>进入Nginx官网：<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">nginx: download</a></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240514221108591.png" alt="image-20240514221108591"></p>
+<p>我们可以看到稳定版本是1.26。</p>
+<p>先进入&#x2F;usr&#x2F;local&#x2F;src目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/src</span><br><span class="line"><span class="comment"># 下载源码</span></span><br><span class="line">wget http://nginx.org/download/nginx-1.26.0.tar.gz</span><br><span class="line"><span class="comment"># 解压源码</span></span><br><span class="line">tar -xf nginx-1.26.0.tar.gz</span><br><span class="line"><span class="comment"># 进入源代码内</span></span><br><span class="line"><span class="built_in">cd</span> nginx-1.26.0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515013303696.png" alt="image-20240515013303696"></p>
+<br>
+
+<br>
+
+<h1 id="配置和编译"><a href="#配置和编译" class="headerlink" title="配置和编译"></a>配置和编译</h1><p>接下来就是make环节，编译时候的参数可以参考<a target="_blank" rel="noopener" href="https://xuexb.github.io/learn-nginx/guide/nginx-configure-descriptions.html#%E5%91%BD%E4%BB%A4">Nginx 编译参数 | Nginx 入门教程 (xuexb.github.io)</a>，和<a target="_blank" rel="noopener" href="http://nginx.org/en/docs/configure.html">官方文档</a>。</p>
+<p>先创建一个用户’www’，我设置的是这个用户不能登录系统。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -s /sbin/nologin www</span><br></pre></td></tr></table></figure>
+
+
+
+<p>下面是我编译时候借鉴的参数，直接复制到终端执行就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">./configure \</span><br><span class="line">--prefix=/usr/local/nginx \</span><br><span class="line">--user=www \</span><br><span class="line">--group=www \</span><br><span class="line">--sbin-path=/usr/local/nginx/sbin/nginx \</span><br><span class="line">--conf-path=/usr/local/nginx/nginx.conf \</span><br><span class="line">--error-log-path=/var/log/nginx/error.log \</span><br><span class="line">--http-log-path=/var/log/nginx/access.log \</span><br><span class="line">--pid-path=/var/run/nginx.pid \</span><br><span class="line">--lock-path=/var/run/nginx.lock \</span><br><span class="line">--http-client-body-temp-path=/var/cache/nginx/client_temp \</span><br><span class="line">--http-proxy-temp-path=/var/cache/nginx/proxy_temp \</span><br><span class="line">--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \</span><br><span class="line">--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp \</span><br><span class="line">--http-scgi-temp-path=/var/cache/nginx/scgi_temp \</span><br><span class="line">--with-file-aio \</span><br><span class="line">--with-threads \</span><br><span class="line">--with-http_addition_module \</span><br><span class="line">--with-http_auth_request_module \</span><br><span class="line">--with-http_dav_module \</span><br><span class="line">--with-http_flv_module \</span><br><span class="line">--with-http_gunzip_module \</span><br><span class="line">--with-http_gzip_static_module \</span><br><span class="line">--with-http_mp4_module \</span><br><span class="line">--with-http_random_index_module \</span><br><span class="line">--with-http_realip_module \</span><br><span class="line">--with-http_secure_link_module \</span><br><span class="line">--with-http_slice_module \</span><br><span class="line">--with-http_ssl_module \</span><br><span class="line">--with-http_stub_status_module \</span><br><span class="line">--with-http_sub_module \</span><br><span class="line">--with-http_v2_module \</span><br><span class="line">--with-mail \</span><br><span class="line">--with-mail_ssl_module \</span><br><span class="line">--with-stream \</span><br><span class="line">--with-stream_realip_module \</span><br><span class="line">--with-stream_ssl_module \</span><br><span class="line">--with-stream_ssl_preread_module</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515013825919.png" alt="image-20240515013825919"></p>
+<p>如果没有问题，会提示信息：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240514224438415.png" alt="image-20240514224438415"></p>
+<p>没有报错信息就可以编译了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515172237944.png" alt="image-20240515172237944"></p>
+<br>
+
+<br>
+
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515014124128.png" alt="image-20240515014124128"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240515014237588.png" alt="image-20240515014237588"></p>
+<br>
+
+<h2 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h2><p>我们使用<code>systemctl</code>对Nginx进行管理：</p>
+<ul>
+<li><code>systemctl start nginx</code>：启动Nginx服务。</li>
+<li><code>systemctl reload nginx</code>：Nginx配置重载。</li>
+<li><code>systemctl stop nginx</code>：停止Nginx服务。</li>
+<li><code>systemctl daemon-reload</code>:重新加载 systemd 管理的单元文件。</li>
+</ul>
+<p>创建<code>systemctl</code>守护，管理Nginx：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/nginx.service</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240514233857228.png" alt="image-20240514233857228"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=nginx</span><br><span class="line">After=network.target</span><br><span class="line">  </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/usr/local/nginx/sbin/nginx -s quit</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line">  </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>启动一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload  </span><br><span class="line">systemctl start nginx    </span><br><span class="line">systemctl status nginx.service </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515014806055.png" alt="image-20240515014806055"></p>
+<p>启动出现了报错，缺少&#x2F;var&#x2F;cache&#x2F;nginx目录，添加上即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /var/cache/nginx</span><br><span class="line">systemctl start nginx</span><br><span class="line">lsof -i:80 <span class="comment">#显示当前系统中占用端口 80 的进程信息</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515014949726.png" alt="image-20240515014949726"></p>
+<br>
+
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>在命令行输入nginx，会报错，说找不到命令，需要加入环境变量</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240515110617531.png" alt="image-20240515110617531"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment"># 按下shift+g将光标定位到最后一行，新增以下内容：</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/local/nginx/sbin	</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515112152620.png" alt="image-20240515112152620"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile  <span class="comment">#使文件生效</span></span><br><span class="line">nginx  <span class="comment">#没有报错，环境变量配置完毕</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515112701111.png" alt="image-20240515112701111"></p>
+<br>
+
+<br>
+
+<h1 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h1><p>按我的方法编译，那么，需要注意。</p>
+<ul>
+<li><code>/usr/local/nginx</code>：为Nginx编译安装的地址。</li>
+<li><code>/usr/local/nginx/nginx.conf</code>：Nginx默认配置文件。</li>
+</ul>
+<br>
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>写一个HelloWorld</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/nginx</span><br><span class="line">vim nginx.conf  <span class="comment">#编辑配置文件</span></span><br></pre></td></tr></table></figure>
+
+<p>指向目录<code>/www</code>：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240515004556664.png" alt="image-20240515004556664"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">mkdir</span> /www</span><br><span class="line"><span class="built_in">cd</span> www</span><br><span class="line">vim index.html</span><br></pre></td></tr></table></figure>
+
+<p>重载Nginx配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+
+<p>最后，浏览器访问成功：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240515015130758.png" alt="image-20240515015130758"></p>
+<br>
+
+<br>
+
+<h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><h2 id="端口被占用"><a href="#端口被占用" class="headerlink" title="端口被占用"></a>端口被占用</h2><p>systemctl start nginx，报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Job <span class="keyword">for</span> nginx.service failed because the control process exited with error code.</span><br><span class="line">See <span class="string">&quot;systemctl status nginx.service&quot;</span> and <span class="string">&quot;journalctl -xeu nginx.service&quot;</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
+
+<p>systemctl reload nginx，报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx.service is not active, cannot reload.</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515105242239.png" alt="image-20240515105242239"></p>
+<p>接着我们使用systemctl status nginx.service来查看一下当前状态</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240515105448102.png" alt="image-20240515105448102"></p>
+<p>发现处于<strong>inactive</strong>状态，说明启动失败了。</p>
+<p>可以看到可能是因为端口号被占用了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntlp | grep 80        <span class="comment">#查看端口号是否被占用</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240515105835781.png" alt="image-20240515105835781"></p>
+<p>发现端口被占用，使用kill来杀死进程后，重新启动即可。</p>
+<br>
+
+<br>
+
+
+
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 停止Nginx服务</span></span><br><span class="line">systemctl stop nginx</span><br><span class="line"><span class="comment"># 删除Nginx服务</span></span><br><span class="line"><span class="built_in">rm</span> -rf /usr/lib/systemd/system/nginx.service</span><br><span class="line"><span class="comment"># 重载配置</span></span><br><span class="line">systemctl daemon-reload</span><br><span class="line"><span class="comment"># 删除Nginx编译文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf nginx</span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7061998261904605214">详解Debian系统上如何编译安装Nginx - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://xuexb.github.io/learn-nginx/guide/">Nginx 简介 | Nginx 入门教程 (xuexb.github.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Fang_20/article/details/130136727">使用systemctl reload nginx重启Nginx服务报错【Job for nginx.service invalid】_job for nginx.service invalid.-CSDN博客</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Stargaze
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://liuyueyue.top/posts/2024/05/14/1079937748.html" title="Debian12安装Nginx">http://liuyueyue.top/posts/2024/05/14/1079937748.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 云服务器</a>
+              <a href="/tags/Debian/" rel="tag"># Debian</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2024/05/12/3886968423.html" rel="prev" title="Debian12安装MySQL">
+                  <i class="fa fa-angle-left"></i> Debian12安装MySQL
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2024/06/04/3539346108.html" rel="next" title="Docker安装Nginx Proxy Manager">
+                  Docker安装Nginx Proxy Manager <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+
+    <span class="author" itemprop="copyrightHolder">Stargaze</span>
+
+
+  </div>
+<div class="busuanzi-count">
+
+</div>
+
+
+<!-- <br /> -->
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/27/2023 17:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+    }
+//+hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+setInterval("createtime()",250);
+</script>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鄂ICP备2023003756号-2 </a>
+  </div>
+
+<div>
+    本网站由<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><div style="display:inline-block; margin-top: 5px;"><img src="https://image.liucf.com/images/2025/03/4ff5b7d3ed727d330fcdda17165de906.png" height="15px" /></div></a>提供CDN加速/云存储服务
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.liuyueyue.top","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"发表评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":["nick"],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/posts/2024/05/14/1079937748.html"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@waline/client@v2/dist/waline-meta.css"
+/>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

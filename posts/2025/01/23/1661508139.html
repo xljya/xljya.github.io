@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yl-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yl-16x16-next.png">
+  <link rel="mask-icon" href="/images/yl.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liuyueyue.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterance","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用bypy实现百度云盘文件上传与下载。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用bypy实现百度云盘文件上传与下载">
+<meta property="og:url" content="http://liuyueyue.top/posts/2025/01/23/1661508139.html">
+<meta property="og:site_name" content="StargazeのBlog">
+<meta property="og:description" content="使用bypy实现百度云盘文件上传与下载。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/dddf0ea435ca0c209627273cabcf7bb4.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/24af269bb1bcead9ec41a41bfcaafd86.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/051889ae2a3bb91f7e13a3fb406af8a6.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/dafc5a0a1d00dfdce7f71db3cb239e6f.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/1d05c90bd9e0942e3a8a3e3c89bdc464.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/9b099bfe236fa92a8496bbefcbfe07f8.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/b45cfa68ccd983c2cb1a636b72273a4c.png">
+<meta property="og:image" content="https://image.liucf.com/images/2025/01/0fc932e1ac0f0b7b89f743eb2406d608.png">
+<meta property="article:published_time" content="2025-01-23T06:59:41.000Z">
+<meta property="article:modified_time" content="2025-01-23T07:03:01.982Z">
+<meta property="article:author" content="Stargaze">
+<meta property="article:tag" content="云服务器">
+<meta property="article:tag" content="实用工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.liucf.com/images/2025/01/dddf0ea435ca0c209627273cabcf7bb4.png">
+
+
+<link rel="canonical" href="http://liuyueyue.top/posts/2025/01/23/1661508139.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://liuyueyue.top/posts/2025/01/23/1661508139.html","path":"posts/2025/01/23/1661508139.html","title":"使用bypy实现百度云盘文件上传与下载"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用bypy实现百度云盘文件上传与下载 | StargazeのBlog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?b343d7c07a907567847b3f01f10d0ddf"></script>
+
+
+
+
+
+  <script async defer data-website-id="de8fc437-0b80-405d-a60e-df690adf33b4" src="https://umami.liuyueyue.top/script.js" data-host-url="https://umami.liuyueyue.top/"></script>
+
+<link rel="dns-prefetch" href="comment.liuyueyue.top">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="StargazeのBlog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">StargazeのBlog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code simulation world</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章列表</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E6%8E%88%E6%9D%83"><span class="nav-number">2.</span> <span class="nav-text">安装与授权</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pipx"><span class="nav-number">2.1.</span> <span class="nav-text">pipx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">2.1.2.</span> <span class="nav-text">常用指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C-pip-%E5%8C%BA%E5%88%AB"><span class="nav-number">2.1.3.</span> <span class="nav-text">和 pip 区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4-1"><span class="nav-number">3.</span> <span class="nav-text">常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E5%87%BA%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9"><span class="nav-number">3.1.</span> <span class="nav-text">列出目录内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="nav-number">3.2.</span> <span class="nav-text">上传文件或目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="nav-number">3.3.</span> <span class="nav-text">下载文件或目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bypy-downfile"><span class="nav-number">3.3.1.</span> <span class="nav-text">bypy downfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bypy-downdir"><span class="nav-number">3.3.2.</span> <span class="nav-text">bypy downdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bypy-download"><span class="nav-number">3.3.3.</span> <span class="nav-text">bypy download</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A8%E9%83%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">全部指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Stargaze"
+      src="/images/preview.jpg">
+  <p class="site-author-name" itemprop="name">Stargaze</p>
+  <div class="site-description" itemprop="description">一个什么都想学的新手</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:lcfjya@gmail.com" title="E-Mail → mailto:lcfjya@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/xlbbd" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;xlbbd" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/xljya" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xljya" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=3857624959&site=qq&menu=yes&jumpflag=1" title="QQ → https:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;3857624959&amp;site&#x3D;qq&amp;menu&#x3D;yes&amp;jumpflag&#x3D;1" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://liuyueyue.top/posts/2025/01/23/1661508139.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/preview.jpg">
+      <meta itemprop="name" content="Stargaze">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StargazeのBlog">
+      <meta itemprop="description" content="一个什么都想学的新手">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用bypy实现百度云盘文件上传与下载 | StargazeのBlog">
+      <meta itemprop="description" content="使用bypy实现百度云盘文件上传与下载。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用bypy实现百度云盘文件上传与下载
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-23 14:59:41 / 修改时间：15:03:01" itemprop="dateCreated datePublished" datetime="2025-01-23T14:59:41+08:00">2025-01-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">云服务器</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/2025/01/23/1661508139.html#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/posts/2025/01/23/1661508139.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">使用bypy实现百度云盘文件上传与下载。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我的需求是在一家 pt 站上传种子和做种，但是我的初始文件是在百度网盘中，我需要将文件传到我用来刷 pt 的 vps 中，才能进行后续操作。</p>
+<p>对于有 GUI (图形用户界面) 的 linux 系统，想要使用百度网盘直接下载对应的客户端即可进行操作。<br>但是对于云服务器来说，下载客户端不太现实，好在 github 的开源项目 <a target="_blank" rel="noopener" href="https://github.com/houtianze/bypy">bypy</a> 给出了使用命令行操作百度云盘的方法。<br><br></p>
+<br>
+
+<h1 id="安装与授权"><a href="#安装与授权" class="headerlink" title="安装与授权"></a>安装与授权</h1><p>安装和授权 bypy 参考 github 官方文档(上面贴的有链接)即可，也就是使用pip install bypy 进行安装，安装完成后第一次运行时需要授权，只需跑任何一个命令（比如 <code>bypy info</code>）然后跟着说明（登陆等）来授权即可。授权只需一次，一旦成功，以后不会再出现授权提示。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pipx install bypy</span><br><span class="line">bypy info</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://image.liucf.com/images/2025/01/dddf0ea435ca0c209627273cabcf7bb4.png" alt="image.png|300"></p>
+<p><img src="https://image.liucf.com/images/2025/01/24af269bb1bcead9ec41a41bfcaafd86.png" alt="image.png|300"><br>接着点击链接，登录百度云盘后，获取到授权码复制到界面中，再点击 Enter 即可。<br><img src="https://image.liucf.com/images/2025/01/051889ae2a3bb91f7e13a3fb406af8a6.png" alt="image.png|300"><br>提示是这样就表示授权成功了。</p>
+<br>
+
+
+<h2 id="pipx"><a href="#pipx" class="headerlink" title="pipx"></a>pipx</h2><p>和官方文档描述的不同，对于 bypy 的安装，我使用的是 pipx 来替代 pip，<code>pipx</code> 是一个用于隔离安装和运行 Python 命令行工具的工具。它会为每个安装的工具创建独立的虚拟环境，确保不同工具之间的依赖不会冲突。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install pipx</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置路径：</span></span><br><span class="line">pipx ensurepath</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://image.liucf.com/images/2025/01/dafc5a0a1d00dfdce7f71db3cb239e6f.png" alt="image.png|300"></p>
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pipx install &lt;package_name&gt;</code></td>
+<td>安装一个 Python 命令行工具，支持隔离的虚拟环境。</td>
+</tr>
+<tr>
+<td><code>pipx run &lt;package_name&gt; [arguments]</code></td>
+<td>临时运行一个工具，而不进行全局安装。</td>
+</tr>
+<tr>
+<td><code>pipx list</code></td>
+<td>列出通过 pipx 安装的所有工具及其依赖。</td>
+</tr>
+<tr>
+<td><code>pipx uninstall &lt;package_name&gt;</code></td>
+<td>删除指定工具及其虚拟环境。</td>
+</tr>
+<tr>
+<td><code>pipx reinstall-all</code></td>
+<td>重新安装所有工具（通常用于 Python 版本升级后）。</td>
+</tr>
+<tr>
+<td><code>pipx upgrade &lt;package_name&gt;</code></td>
+<td>升级指定工具到最新版本。</td>
+</tr>
+<tr>
+<td><code>pipx upgrade-all</code></td>
+<td>升级所有通过 pipx 安装的工具到最新版本。</td>
+</tr>
+<tr>
+<td><code>pipx ensurepath</code></td>
+<td>检查并确保 pipx 安装的工具路径添加到 <code>$PATH</code> 环境变量中。</td>
+</tr>
+<tr>
+<td><code>pipx environment &lt;package_name&gt;</code></td>
+<td>查看指定工具的虚拟环境详细信息。</td>
+</tr>
+<tr>
+<td><code>pipx runpip &lt;package_name&gt; &lt;command&gt;</code></td>
+<td>在工具的虚拟环境中直接运行 pip 命令。</td>
+</tr>
+<tr>
+<td><code>pipx uninstall-all</code></td>
+<td>卸载所有通过 pipx 安装的工具及其虚拟环境（慎用）。</td>
+</tr>
+<tr>
+<td><code>pipx --version</code></td>
+<td>查看 pipx 的版本号。</td>
+</tr>
+</tbody></table>
+<h3 id="和-pip-区别"><a href="#和-pip-区别" class="headerlink" title="和 pip 区别"></a>和 pip 区别</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>pip</th>
+<th>pipx</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>用途</strong></td>
+<td>用于安装 Python 库或命令行应用程序，可以安装带 entry points 的库</td>
+<td>专门用于安装和管理 Python 命令行工具，每个工具都在隔离的虚拟环境中运行</td>
+</tr>
+<tr>
+<td><strong>虚拟环境</strong></td>
+<td>不自动创建虚拟环境，需要手动使用 <code>venv</code> 或 <code>virtualenv</code> 创建</td>
+<td>自动为每个安装的工具创建隔离的虚拟环境，避免依赖冲突</td>
+</tr>
+<tr>
+<td><strong>全局命令</strong></td>
+<td>安装的包通常是库，需要在 Python 代码中导入使用</td>
+<td>安装的命令行工具可以全局调用，无需激活虚拟环境</td>
+</tr>
+<tr>
+<td><strong>依赖管理</strong></td>
+<td>依赖可能会影响全局 Python 环境或其他项目</td>
+<td>依赖管理在隔离环境中进行，不会影响系统或其他项目</td>
+</tr>
+<tr>
+<td><strong>安装命令</strong></td>
+<td>使用 <code>pip install package_name</code> 命令安装包</td>
+<td>使用 <code>pipx install package_name</code> 命令安装命令行工具</td>
+</tr>
+<tr>
+<td><strong>升级和卸载</strong></td>
+<td>需要手动管理包的升级和卸载</td>
+<td>提供简单的命令来升级所有工具或卸载特定工具</td>
+</tr>
+<tr>
+<td><strong>与 PyPI 集成</strong></td>
+<td>直接从 PyPI 安装包</td>
+<td>也从 PyPI 安装包，但专注于命令行工具</td>
+</tr>
+<tr>
+<td><strong>用户权限</strong></td>
+<td>可能需要管理员权限来安装全局包</td>
+<td>通常不需要管理员权限，可以作为普通用户操作</td>
+</tr>
+<tr>
+<td><strong>临时执行</strong></td>
+<td>不支持临时执行环境</td>
+<td>支持通过 <code>pipx run</code> 在临时环境中运行应用程序，无需安装</td>
+</tr>
+<tr>
+<td><strong>多版本管理</strong></td>
+<td>需要手动管理不同版本的包</td>
+<td>自动处理不同版本的工具和它们的依赖，无需手动干预</td>
+</tr>
+<tr>
+<td><strong>跨平台支持</strong></td>
+<td>支持多个平台，但可能需要不同的包管理器</td>
+<td>跨平台支持，包括 Linux、macOS 和 Windows</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<br>
+
+<h1 id="常用指令-1"><a href="#常用指令-1" class="headerlink" title="常用指令"></a>常用指令</h1><h2 id="列出目录内容"><a href="#列出目录内容" class="headerlink" title="列出目录内容"></a>列出目录内容</h2><blockquote>
+<p>bypy list [远程目录]</p>
+</blockquote>
+<p>默认显示百度网盘 &#x2F;apps（就是“我的应用数据”）&#x2F;bypy 目录下的所有文件。<br>例如: bypy list &#x2F; 列出根目录内容，不加这个&#x2F;，也是默认根目录<br><img src="https://image.liucf.com/images/2025/01/1d05c90bd9e0942e3a8a3e3c89bdc464.png" alt="image.png|300"><br><img src="https://image.liucf.com/images/2025/01/9b099bfe236fa92a8496bbefcbfe07f8.png" alt="image.png|300"><br><img src="https://image.liucf.com/images/2025/01/b45cfa68ccd983c2cb1a636b72273a4c.png" alt="image.png|300"><br>bypy会在你的百度网盘里的这个目录里，我的应用数据&#x2F;bypy&#x2F;下面，所以如果你要把网盘的内容通过bypy放到服务器，需要现在网盘里把数据先移到bypy的目录下。同理，这里上传下载对应的目录都是我的应用数据&#x2F;bypy&#x2F;这里路径下。<br><br></p>
+<h2 id="上传文件或目录"><a href="#上传文件或目录" class="headerlink" title="上传文件或目录"></a>上传文件或目录</h2><blockquote>
+<p>bypy upload &lt;本地路径&gt; [远程目录]</p>
+</blockquote>
+<p>这是从云服务器上传文件到百度网盘。<br>测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bypy upload /root/data/bypy/1.txt /测试</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://image.liucf.com/images/2025/01/0fc932e1ac0f0b7b89f743eb2406d608.png" alt="image.png|300"><br><br></p>
+<h2 id="下载文件或目录"><a href="#下载文件或目录" class="headerlink" title="下载文件或目录"></a>下载文件或目录</h2><h3 id="bypy-downfile"><a href="#bypy-downfile" class="headerlink" title="bypy downfile"></a>bypy downfile</h3><ul>
+<li><strong>功能</strong>：下载远程的<strong>单个文件</strong>。</li>
+<li><strong>用法</strong>：<code>bypy downfile &lt;remotefile&gt; [localpath]</code><ul>
+<li><code>remotefile</code>：百度云上的目标文件路径（从应用根目录开始）。</li>
+<li><code>localpath</code>：本地存储路径：<ul>
+<li>如果以 <code>/</code> 或 <code>\</code> 结尾，表示下载到指定的本地目录。</li>
+<li>如果是已存在的本地目录，也表示目标是该目录。</li>
+<li>如果未指定，则默认存储在当前目录 <code>.</code>。</li>
+<li>如果是一个新的路径（非目录），则表示存储为指定的文件名。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>特点</strong>：<ul>
+<li>专用于下载单个文件。</li>
+<li>提供了<strong>流式处理</strong>的能力，可以通过 <code>mkfifo</code> 管道结合 <code>omxplayer</code> 等工具直接播放流媒体。</li>
+</ul>
+</li>
+</ul>
+<h3 id="bypy-downdir"><a href="#bypy-downdir" class="headerlink" title="bypy downdir"></a>bypy downdir</h3><ul>
+<li><strong>功能</strong>：递归下载远程的<strong>目录</strong>。</li>
+<li><strong>用法</strong>：<code>bypy downdir [remotedir] [localdir]</code><ul>
+<li><code>remotedir</code>：百度云上的目标目录路径（从应用根目录开始）。如果未指定，则默认是百度云的根目录。</li>
+<li><code>localdir</code>：本地目标目录。如果未指定，默认为当前目录。</li>
+</ul>
+</li>
+<li><strong>特点</strong>：<ul>
+<li>专门用于下载整个目录，包括目录中的所有子目录和文件。</li>
+<li>只能下载目录，不支持单个文件的操作。</li>
+</ul>
+</li>
+</ul>
+<h3 id="bypy-download"><a href="#bypy-download" class="headerlink" title="bypy download"></a>bypy download</h3><ul>
+<li><strong>功能</strong>：根据远程路径（文件或目录）智能下载<strong>文件或目录</strong>。</li>
+<li><strong>用法</strong>：<code>bypy download [remotepath] [localpath]</code><ul>
+<li><code>remotepath</code>：百度云上的目标路径，可以是文件也可以是目录。如果未指定，默认是百度云的根目录。</li>
+<li><code>localpath</code>：本地目标路径。如果未指定，默认是当前目录。</li>
+</ul>
+</li>
+<li><strong>特点</strong>：<ul>
+<li>既支持文件下载，也支持目录递归下载。</li>
+<li>根据目标类型自动决定下载逻辑（文件&#x2F;目录）。</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<br>
+
+<h1 id="全部指令"><a href="#全部指令" class="headerlink" title="全部指令"></a>全部指令</h1><p>显示使用帮助和所有命令（英文）：bypy</p>
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>help &lt;command&gt;</code></td>
+<td>显示指定命令的帮助信息</td>
+</tr>
+<tr>
+<td><code>cdl_add &lt;source_url&gt; [save_path] [timeout]</code></td>
+<td>添加离线下载任务</td>
+</tr>
+<tr>
+<td><code>cdl_addmon &lt;source_url&gt; [save_path] [timeout]</code></td>
+<td>添加并监控离线下载任务</td>
+</tr>
+<tr>
+<td><code>cdl_cancel &lt;task_id&gt;</code></td>
+<td>取消离线下载任务</td>
+</tr>
+<tr>
+<td><code>cdl_list</code></td>
+<td>列出所有离线下载任务</td>
+</tr>
+<tr>
+<td><code>cdl_query &lt;task_ids&gt;</code></td>
+<td>查询离线下载任务</td>
+</tr>
+<tr>
+<td><code>cleancache</code></td>
+<td>清除无效的哈希缓存</td>
+</tr>
+<tr>
+<td><code>combine &lt;remotefile&gt; [localfile] [md5s]</code></td>
+<td>合并文件切片</td>
+</tr>
+<tr>
+<td><code>compare [remotedir] [localdir]</code></td>
+<td>比较远程目录和本地目录</td>
+</tr>
+<tr>
+<td><code>copy/cp &lt;from&gt; &lt;to&gt;</code></td>
+<td>远程复制文件&#x2F;目录</td>
+</tr>
+<tr>
+<td><code>delete/remove/rm &lt;remotepath&gt;</code></td>
+<td>删除远程文件&#x2F;目录</td>
+</tr>
+<tr>
+<td><code>downdir [remotedir] [localdir]</code></td>
+<td>递归下载远程目录</td>
+</tr>
+<tr>
+<td><code>downfile &lt;remotefile&gt; [localpath]</code></td>
+<td>下载远程文件</td>
+</tr>
+<tr>
+<td><code>download [remotepath] [localpath]</code></td>
+<td>智能下载文件或目录</td>
+</tr>
+<tr>
+<td><code>dumpcache</code></td>
+<td>显示文件哈希缓存</td>
+</tr>
+<tr>
+<td><code>list/ls [remotepath] [format] [sort] [order]</code></td>
+<td>列出远程目录内容</td>
+</tr>
+<tr>
+<td><code>listrecycle [start] [limit]</code></td>
+<td>列出回收站内容</td>
+</tr>
+<tr>
+<td><code>meta &lt;remotepath&gt; [format]</code></td>
+<td>获取远程文件&#x2F;目录信息</td>
+</tr>
+<tr>
+<td><code>mkdir &lt;remotedir&gt;</code></td>
+<td>创建远程目录</td>
+</tr>
+<tr>
+<td><code>move/mv/rename/ren &lt;from&gt; &lt;to&gt;</code></td>
+<td>远程移动文件&#x2F;目录</td>
+</tr>
+<tr>
+<td><code>quota/info</code></td>
+<td>显示云存储配额</td>
+</tr>
+<tr>
+<td><code>refreshtoken</code></td>
+<td>刷新访问 token</td>
+</tr>
+<tr>
+<td><code>restore &lt;remotepath&gt;</code></td>
+<td>从回收站恢复文件</td>
+</tr>
+<tr>
+<td><code>search &lt;keyword&gt; [remotepath] [recursive]</code></td>
+<td>搜索远程文件</td>
+</tr>
+<tr>
+<td><code>stream &lt;remotefile&gt; &lt;localpipe&gt; [format] [chunk]</code></td>
+<td>流式处理远程文件（如视频&#x2F;音频）</td>
+</tr>
+<tr>
+<td><code>syncdown [remotedir] [localdir] [deletelocal]</code></td>
+<td>从远程同步到本地目录</td>
+</tr>
+<tr>
+<td><code>syncup [localdir] [remotedir] [deleteremote]</code></td>
+<td>从本地同步到远程目录</td>
+</tr>
+<tr>
+<td><code>upload [localpath] [remotepath] [ondup]</code></td>
+<td>上传文件或目录</td>
+</tr>
+<tr>
+<td><code>whoami</code></td>
+<td>显示用户信息</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/houtianze/bypy">houtianze&#x2F;bypy: Python client for Baidu Yun (Personal Cloud Storage) 百度云&#x2F;百度网盘Python客户端</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/crazyjinks/article/details/140290187">https://blog.csdn.net/crazyjinks/article/details/140290187</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/PolarisRisingWar/article/details/121887801">bypy：使用Linux命令行上传及下载百度云盘文件（远程服务器大文件传输必备）-CSDN博客</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Stargaze
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://liuyueyue.top/posts/2025/01/23/1661508139.html" title="使用bypy实现百度云盘文件上传与下载">http://liuyueyue.top/posts/2025/01/23/1661508139.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 云服务器</a>
+              <a href="/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" rel="tag"># 实用工具</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2024/10/30/1262640889.html" rel="prev" title="基于Spring Boot的健身房场馆预约系统">
+                  <i class="fa fa-angle-left"></i> 基于Spring Boot的健身房场馆预约系统
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2025/01/26/1732245461.html" rel="next" title="VPS制作种子和发布">
+                  VPS制作种子和发布 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+
+    <span class="author" itemprop="copyrightHolder">Stargaze</span>
+
+
+  </div>
+<div class="busuanzi-count">
+
+</div>
+
+
+<!-- <br /> -->
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/27/2023 17:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+    }
+//+hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+setInterval("createtime()",250);
+</script>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鄂ICP备2023003756号-2 </a>
+  </div>
+
+<div>
+    本网站由<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><div style="display:inline-block; margin-top: 5px;"><img src="https://image.liucf.com/images/2025/03/4ff5b7d3ed727d330fcdda17165de906.png" height="15px" /></div></a>提供CDN加速/云存储服务
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.liuyueyue.top","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"发表评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":["nick"],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/posts/2025/01/23/1661508139.html"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@waline/client@v2/dist/waline-meta.css"
+/>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yl-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yl-16x16-next.png">
+  <link rel="mask-icon" href="/images/yl.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liuyueyue.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterance","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="记录一下Debian12安装MySQL的过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Debian12安装MySQL">
+<meta property="og:url" content="http://liuyueyue.top/posts/2024/05/12/3886968423.html">
+<meta property="og:site_name" content="StargazeのBlog">
+<meta property="og:description" content="记录一下Debian12安装MySQL的过程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513000543472.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513001638021.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513001840666.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513002213551.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513002445159.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513002724887.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513003313187.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513081610751.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513081626305.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513082512768.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513082606857.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513082726323.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513083222950.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513084243290.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513084539811.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513084840471.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513085251082.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513133133016.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513133213087.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513133718587.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513133812896.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513105920061.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513112248083.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513113249440.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513175117547.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513162440184.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513164559362.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513164816151.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513171216742.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513171230752.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513171305254.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513173853789.png">
+<meta property="og:image" content="https://img.liuyueyue.top//xlimage-20240513174805632.png">
+<meta property="article:published_time" content="2024-05-12T15:12:02.000Z">
+<meta property="article:modified_time" content="2024-06-04T07:35:38.770Z">
+<meta property="article:author" content="Stargaze">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="云服务器">
+<meta property="article:tag" content="Debian">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.liuyueyue.top//xlimage-20240513000543472.png">
+
+
+<link rel="canonical" href="http://liuyueyue.top/posts/2024/05/12/3886968423.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":"","permalink":"http://liuyueyue.top/posts/2024/05/12/3886968423.html","path":"posts/2024/05/12/3886968423.html","title":"Debian12安装MySQL"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Debian12安装MySQL | StargazeのBlog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?b343d7c07a907567847b3f01f10d0ddf"></script>
+
+
+
+
+
+  <script async defer data-website-id="de8fc437-0b80-405d-a60e-df690adf33b4" src="https://umami.liuyueyue.top/script.js" data-host-url="https://umami.liuyueyue.top/"></script>
+
+<link rel="dns-prefetch" href="comment.liuyueyue.top">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="StargazeのBlog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">StargazeのBlog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code simulation world</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章列表</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-MySQL-%E5%AD%98%E5%82%A8%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">配置 MySQL 存储库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MySQL"><span class="nav-number">3.</span> <span class="nav-text">安装 MySQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4-MySQL"><span class="nav-number">4.</span> <span class="nav-text">保护 MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="nav-number">4.1.</span> <span class="nav-text">设置密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="nav-number">4.2.</span> <span class="nav-text">修改密码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C-MySQL"><span class="nav-number">5.</span> <span class="nav-text">操作 MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95"><span class="nav-number">5.1.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7"><span class="nav-number">5.2.</span> <span class="nav-text">创建新用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%88%E6%9D%83"><span class="nav-number">5.3.</span> <span class="nav-text">授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="nav-number">5.4.</span> <span class="nav-text">删除用户</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-MySQL"><span class="nav-number">6.</span> <span class="nav-text">配置 MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E4%B8%8D%E6%95%8F%E6%84%9F"><span class="nav-number">6.1.</span> <span class="nav-text">大小写不敏感</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-1"><span class="nav-number">6.1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%8E%B0%E6%9C%89%E9%85%8D%E7%BD%AE"><span class="nav-number">6.1.2.</span> <span class="nav-text">查看现有配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.1.3.</span> <span class="nav-text">具体实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">6.1.4.</span> <span class="nav-text">重新配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Stargaze"
+      src="/images/preview.jpg">
+  <p class="site-author-name" itemprop="name">Stargaze</p>
+  <div class="site-description" itemprop="description">一个什么都想学的新手</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:lcfjya@gmail.com" title="E-Mail → mailto:lcfjya@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/xlbbd" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;xlbbd" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/xljya" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xljya" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=3857624959&site=qq&menu=yes&jumpflag=1" title="QQ → https:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;3857624959&amp;site&#x3D;qq&amp;menu&#x3D;yes&amp;jumpflag&#x3D;1" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://liuyueyue.top/posts/2024/05/12/3886968423.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/preview.jpg">
+      <meta itemprop="name" content="Stargaze">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StargazeのBlog">
+      <meta itemprop="description" content="一个什么都想学的新手">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Debian12安装MySQL | StargazeのBlog">
+      <meta itemprop="description" content="记录一下Debian12安装MySQL的过程。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Debian12安装MySQL
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-12 23:12:02" itemprop="dateCreated datePublished" datetime="2024-05-12T23:12:02+08:00">2024-05-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-04 15:35:38" itemprop="dateModified" datetime="2024-06-04T15:35:38+08:00">2024-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">云服务器</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">记录一下Debian12安装MySQL的过程。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​	因为最近在做项目，需要测试一下线上环境，所以要使用到MySQL数据库，我尽量和本地数据库版本保持一致，下载的也会是8.0版本。</p>
+<p>​	我的设备是阿里云2核4G的云服务器，系统是DD之后的Debian12，远程连接工具是FinalShell，安装完成后记得配置一下阿里云的安全组，打开3306端口。</p>
+<br>
+
+<br>
+
+<h1 id="配置-MySQL-存储库"><a href="#配置-MySQL-存储库" class="headerlink" title="配置 MySQL 存储库"></a>配置 MySQL 存储库</h1><p>访问<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/apt/">Debian最新的配置源</a>，复制到下面的配置中。</p>
+<p>目前最新的是<strong>mysql-apt-config_0.8.30-1_all.deb</strong></p>
+<p>要将 MySQL APT 存储库添加到系统，请转到存储库下载页面并使用以下 wget 命令下载最新的发行包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update   </span><br><span class="line">wget https://dev.mysql.com/get/mysql-apt-config_0.8.30-1_all.deb</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513000543472.png" alt="image-20240513000543472"></p>
+<p>下载完成后，以具有 sudo 权限的用户身份安装发行包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i mysql-apt-config_0.8.30-1_all.deb</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513001638021.png" alt="image-20240513001638021"></p>
+<p>提示需要安装gnupg。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnupg</span><br></pre></td></tr></table></figure>
+
+<p>安装后继续执行：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513001840666.png" alt="image-20240513001840666"></p>
+<p>我们点进去，发现可以选择8.0版本</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513002213551.png" alt="image-20240513002213551"></p>
+<p>然后选择OK</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513002445159.png" alt="image-20240513002445159"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513002724887.png" alt="image-20240513002724887"></p>
+<br>
+
+<br>
+
+<h1 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h1><p>通过运行以下命令更新包列表并安装 MySQL 服务器包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513003313187.png" alt="image-20240513003313187"></p>
+<p>直接报错，没找到这个包。</p>
+<p>经过搜索之后，发现需要更新软件包（我只是开始更新了一次）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update </span><br><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+
+<p>吐槽一下，带宽太低了，安装了好长时间。。。</p>
+<p>接下来就是设置密码：</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513081610751.png" alt="image-20240513081610751"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513081626305.png" alt="image-20240513081626305"></p>
+<p>按Tab或者小键盘右键（End）可以选中OK，然后<strong>密码留空</strong></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513082512768.png" alt="image-20240513082512768"></p>
+<p>然后直接Tab，选择OK</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513082606857.png" alt="image-20240513082606857"></p>
+<p>接着选择使用强密码加密</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513082726323.png" alt="image-20240513082726323"></p>
+<p>安装完成后， MySQL 服务将自动启动，您可以通过键入以下内容来验证它：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mysql</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513083222950.png" alt="image-20240513083222950"></p>
+<br>
+
+<br>
+
+<h1 id="保护-MySQL"><a href="#保护-MySQL" class="headerlink" title="保护 MySQL"></a>保护 MySQL</h1><p>运行该 mysql_secure_installation 命令设置 root 密码并提高 MySQL 安装的安全性：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513084243290.png" alt="image-20240513084243290"></p>
+<p>询问是否要启用密码验证组件。如果你想启用这个组件，可以按下 <code>y</code> 或 <code>Y</code>。如果不想启用，可以按下任意其他键。</p>
+<p>这里我直接回车。</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513084539811.png" alt="image-20240513084539811"></p>
+<p>这里我输入了密码，但是报错了。</p>
+<p>提示SET PASSWORD对用户“root”@’localhost“没有意义，因为使用的身份验证方法不会将身份验证数据存储在MySQL服务器中。如果要更改身份验证参数，请考虑改用 ALTER USER。</p>
+<br>
+
+<h2 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h2><p>上面的界面可以直接关闭了，打开一个新的终端界面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513084840471.png" alt="image-20240513084840471"></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x27;%&#x27; - 所有情况都能访问</span><br><span class="line">&#x27;localhost&#x27; - 本机才能访问</span><br><span class="line">&#x27;<span class="number">111</span>.<span class="number">222</span>.<span class="number">33</span>.<span class="number">44</span>&#x27; - 指定 ip 才能访问</span><br></pre></td></tr></table></figure>
+
+<p>接下来修改密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password by &#x27;123456&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513085251082.png" alt="image-20240513085251082"></p>
+<p>输入exit返回终端后，再运行mysql_secure_installation。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">root@iZf8z2vb82x33szfaz267uZ:~<span class="comment"># sudo mysql_secure_installation</span></span><br><span class="line"></span><br><span class="line">Securing the MySQL server deployment.</span><br><span class="line"></span><br><span class="line">Enter password <span class="keyword">for</span> user root: </span><br><span class="line"></span><br><span class="line">VALIDATE PASSWORD COMPONENT can be used to <span class="built_in">test</span> passwords</span><br><span class="line">and improve security. It checks the strength of password</span><br><span class="line">and allows the <span class="built_in">users</span> to <span class="built_in">set</span> only those passwords <span class="built_in">which</span> are</span><br><span class="line">secure enough. Would you like to setup VALIDATE PASSWORD component?</span><br><span class="line"></span><br><span class="line">Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No: n</span><br><span class="line">Using existing password <span class="keyword">for</span> root.</span><br><span class="line">Change the password <span class="keyword">for</span> root ? ((Press y|Y for Yes, any other key for No) : n</span><br><span class="line"></span><br><span class="line"> ... skipping.</span><br><span class="line">By default, a MySQL installation has an anonymous user,</span><br><span class="line">allowing anyone to log into MySQL without having to have</span><br><span class="line">a user account created for them. This is intended only for</span><br><span class="line">testing, and to make the installation go a bit smoother.</span><br><span class="line">You should remove them before moving into a production</span><br><span class="line">environment.</span><br><span class="line"></span><br><span class="line">Remove anonymous users? (Press y|Y for Yes, any other key for No) : y</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Normally, root should only be allowed to connect from</span><br><span class="line">&#x27;localhost&#x27;. This ensures that someone cannot guess at</span><br><span class="line">the root password from the network.</span><br><span class="line"></span><br><span class="line">Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line">By default, MySQL comes with a database named &#x27;test&#x27; that</span><br><span class="line">anyone can access. This is also intended only for testing,</span><br><span class="line">and should be removed before moving into a production</span><br><span class="line">environment.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y</span><br><span class="line"> - Dropping test database...</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line"> - Removing privileges on test database...</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line">Reloading the privilege tables will ensure that all changes</span><br><span class="line">made so far will take effect immediately.</span><br><span class="line"></span><br><span class="line">Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line">All done! </span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h2><p>修改用户密码，记得<strong>先登录mysql的root用户</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter user &#x27;用户名&#x27;@&#x27;%&#x27; identified by &#x27;密码&#x27;;</span><br><span class="line">alter user &#x27;用户名&#x27;@&#x27;%&#x27; identified with mysql_native_password BY &#x27;密码&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513133133016.png" alt="image-20240513133133016"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513133213087.png" alt="image-20240513133213087"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513133718587.png" alt="image-20240513133718587"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513133812896.png" alt="image-20240513133812896"></p>
+<br>
+
+<br>
+
+<h1 id="操作-MySQL"><a href="#操作-MySQL" class="headerlink" title="操作 MySQL"></a>操作 MySQL</h1><h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513105920061.png" alt="image-20240513105920061"></p>
+<br>
+
+<h2 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#默认</span><br><span class="line">create user &#x27;用户名&#x27;@&#x27;%&#x27; identified by &#x27;密码&#x27;;</span><br><span class="line">#指定mysql_native_password插件</span><br><span class="line">create user &#x27;用户名&#x27;@&#x27;%&#x27; identified with mysql_native_password by &#x27;密码&#x27;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>先使用mysql -uroot -p进行登录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create user &#x27;lcf&#x27;@&#x27;%&#x27; identified with mysql_native_password by &#x27;123456&#x27;;</span><br><span class="line"></span><br><span class="line">create user &#x27;lyy&#x27;@&#x27;%&#x27; identified by &#x27;123456&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513112248083.png" alt="image-20240513112248083"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513113249440.png" alt="image-20240513113249440"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513175117547.png" alt="image-20240513175117547"></p>
+<p>我们可以看到lcf和lyy的<strong>密码插件不同</strong>。</p>
+<br>
+
+<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on database_name.* to &#x27;username&#x27;@&#x27;%&#x27;;</span><br><span class="line">-- &#x27;database_name&#x27; - 赋予权限的数据库名称</span><br><span class="line">-- &#x27;username&#x27; - 用户名</span><br><span class="line">-- &#x27;localhost&#x27; - 用户只能在本地访问数据库</span><br><span class="line"></span><br><span class="line"># 全部数据库</span><br><span class="line">grant all privileges on *.* to &#x27;username&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>这个命令的效果是将对指定数据库的所有权限授予给特定用户，使该用户能够从任何主机连接并对数据库进行操作。</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513162440184.png" alt="image-20240513162440184"></p>
+<br>
+
+<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">delete from mysql.user where user=&#x27;用户名&#x27;;</span><br><span class="line"></span><br><span class="line">delete from mysql.user where user=&#x27;lyy&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513164559362.png" alt="image-20240513164559362"></p>
+<br>
+
+<br>
+
+<h1 id="配置-MySQL"><a href="#配置-MySQL" class="headerlink" title="配置 MySQL"></a>配置 MySQL</h1><h2 id="大小写不敏感"><a href="#大小写不敏感" class="headerlink" title="大小写不敏感"></a>大小写不敏感</h2><h3 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h3><p>配置这个属性很重要，我这里只介绍安装后再修改配置的方法，<strong>在安装后再修改配置（会删除原有的数据和设置）</strong>，所以需要谨慎使用。</p>
+<p>在 MySQL 8 中，数据目录初始化之后，不再允许更改lower_case_table_names &#x3D; 1的值；</p>
+<p>MySQL 基于某些原因，禁止在重新启动 MySQL 服务时将<code> lower_case_table_names</code> 设置 成不同于初始化 MySQL 服务时设置的 lower_case_table_names 值。</p>
+<p>也就是说启动（重启）MySQL 时，<code>lower_case_table_names</code>的值必须与初始化 MySQL 时（安装 MySQL 后的首次启动）的值相同。</p>
+<br>
+
+<h3 id="查看现有配置"><a href="#查看现有配置" class="headerlink" title="查看现有配置"></a>查看现有配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show global variables like &#x27;%case%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513164816151.png" alt="image-20240513164816151"></p>
+<ul>
+<li>lower_case_file_system：表示当前系统文件是否大小写敏感（ON为不敏感，OFF为敏感），只读参数，无法修改。</li>
+<li>lower_case_table_names：表示表名是否大小写敏感，可以修改。</li>
+<li>lower_case_table_names &#x3D; 0时，mysql会根据表名直接操作，大小写敏感。</li>
+<li>lower_case_table_names &#x3D; 1时，mysql会先把表名转为小写，再执行操作。</li>
+</ul>
+<br>
+
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>1.停止MySQL</p>
+<p>2.删除数据目录，即删除 &#x2F;var&#x2F;lib&#x2F;mysql 目录、</p>
+<p>3.在MySQL配置文件（ &#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf ）中添加 lower_case_table_names&#x3D;1</p>
+<p>4.启动 MySQL（这个时候没有密码了）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql stop</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /var/lib/mysql</span><br><span class="line">sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line">sudo service mysql restart</span><br><span class="line">mysql -uroot -p </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513171216742.png" alt="image-20240513171216742"></p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513171230752.png" alt="image-20240513171230752"></p>
+<p>然后再查看一下配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show global variables like &#x27;%case%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513171305254.png" alt="image-20240513171305254"></p>
+<br>
+
+<h3 id="重新配置"><a href="#重新配置" class="headerlink" title="重新配置"></a>重新配置</h3><p>数据库表已经不区分大小写了，接着再配置一下密码，用户即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># 连接</span><br><span class="line">mysql -uroot -p</span><br><span class="line"></span><br><span class="line">#设置root可以远程连接</span><br><span class="line">use mysql;</span><br><span class="line">update user set host = &#x27;%&#x27; where user = &#x27;root&#x27;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql&gt; select user, plugin from mysql.user;</span><br><span class="line">+------------------+-----------------------+</span><br><span class="line">| user             | plugin                |</span><br><span class="line">+------------------+-----------------------+</span><br><span class="line">| root             | auth_socket           |</span><br><span class="line">| mysql.infoschema | caching_sha2_password |</span><br><span class="line">| mysql.session    | caching_sha2_password |</span><br><span class="line">| mysql.sys        | caching_sha2_password |</span><br><span class="line">+------------------+-----------------------+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#更新了用户root的插件信息</span><br><span class="line">update user set plugin=&#x27;mysql_native_password&#x27; where user=&#x27;root&#x27;;</span><br><span class="line"></span><br><span class="line">#修改密码</span><br><span class="line">alter user &#x27;root&#x27;@&#x27;%&#x27; identified with mysql_native_password by &#x27;123456&#x27;;</span><br><span class="line"></span><br><span class="line">#更新权限</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://img.liuyueyue.top//xlimage-20240513173853789.png" alt="image-20240513173853789"></p>
+<p>输入alter user ‘root‘@’localhost’ identified with mysql_native_password by ‘123456’; </p>
+<p>出现了报错，原因是我的user为root，而我的host为%，改localhost为%即可。</p>
+<p><img src="https://img.liuyueyue.top//xlimage-20240513174805632.png" alt="image-20240513174805632"></p>
+<br>
+
+<br>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43961117/article/details/126755140">Debian直接安装mysql8_debian安装mysql8-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/644842430">mysql 8改为不区分大小写的2种方法 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lym003/article/details/133769639">Debian12安装MySQL8、创建新用户、授权实践及问题解决方案_debian12 安装mysql-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45675449/article/details/106866700">MySQL报错：ERROR 1396 (HY000): Operation ALTER USER failed for root@localhost-CSDN博客</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Stargaze
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://liuyueyue.top/posts/2024/05/12/3886968423.html" title="Debian12安装MySQL">http://liuyueyue.top/posts/2024/05/12/3886968423.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 云服务器</a>
+              <a href="/tags/Debian/" rel="tag"># Debian</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2024/04/22/3587609196.html" rel="prev" title="云服务器一键DD重装">
+                  <i class="fa fa-angle-left"></i> 云服务器一键DD重装
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2024/05/14/1079937748.html" rel="next" title="Debian12安装Nginx">
+                  Debian12安装Nginx <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+
+    <span class="author" itemprop="copyrightHolder">Stargaze</span>
+
+
+  </div>
+<div class="busuanzi-count">
+
+</div>
+
+
+<!-- <br /> -->
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/27/2023 17:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+    }
+//+hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+setInterval("createtime()",250);
+</script>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鄂ICP备2023003756号-2 </a>
+  </div>
+
+<div>
+    本网站由<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><div style="display:inline-block; margin-top: 5px;"><img src="https://image.liucf.com/images/2025/03/4ff5b7d3ed727d330fcdda17165de906.png" height="15px" /></div></a>提供CDN加速/云存储服务
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.liuyueyue.top","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"发表评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":["nick"],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/posts/2024/05/12/3886968423.html"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@waline/client@v2/dist/waline-meta.css"
+/>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yl-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yl-16x16-next.png">
+  <link rel="mask-icon" href="/images/yl.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liuyueyue.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterance","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="记录一下常用进制转换的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进制转换">
+<meta property="og:url" content="http://liuyueyue.top/posts/2023/12/09/2110329172.html">
+<meta property="og:site_name" content="StargazeのBlog">
+<meta property="og:description" content="记录一下常用进制转换的方法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-09T09:38:42.000Z">
+<meta property="article:modified_time" content="2024-06-04T07:51:57.514Z">
+<meta property="article:author" content="Stargaze">
+<meta property="article:tag" content="刷题日常">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://liuyueyue.top/posts/2023/12/09/2110329172.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://liuyueyue.top/posts/2023/12/09/2110329172.html","path":"posts/2023/12/09/2110329172.html","title":"进制转换"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>进制转换 | StargazeのBlog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?b343d7c07a907567847b3f01f10d0ddf"></script>
+
+
+
+
+
+  <script async defer data-website-id="de8fc437-0b80-405d-a60e-df690adf33b4" src="https://umami.liuyueyue.top/script.js" data-host-url="https://umami.liuyueyue.top/"></script>
+
+<link rel="dns-prefetch" href="comment.liuyueyue.top">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="StargazeのBlog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">StargazeのBlog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code simulation world</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章列表</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>文章分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>文章标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%94%A8API"><span class="nav-number">2.</span> <span class="nav-text">调用API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6"><span class="nav-number">2.1.</span> <span class="nav-text">十进制转其他进制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="nav-number">2.1.1.</span> <span class="nav-text">转二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E5%85%AB%E8%BF%9B%E5%88%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">转八进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="nav-number">2.1.3.</span> <span class="nav-text">转十六进制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="nav-number">2.2.</span> <span class="nav-text">其他进制转十进制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BD%AC%E5%8D%81"><span class="nav-number">2.2.1.</span> <span class="nav-text">二转十</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E8%BD%AC%E5%8D%81"><span class="nav-number">2.2.2.</span> <span class="nav-text">八转十</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E5%85%AD%E8%BD%AC%E5%8D%81"><span class="nav-number">2.2.3.</span> <span class="nav-text">十六转十</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E8%BF%9B%E5%88%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.3.</span> <span class="nav-text">不同进制之间的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="nav-number">2.3.1.</span> <span class="nav-text">其他进制转二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">二进制转其他进制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">手动实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6-1"><span class="nav-number">3.1.</span> <span class="nav-text">十进制转其他进制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">转二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E5%85%AB%E8%BF%9B%E5%88%B6-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">转八进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6-1"><span class="nav-number">3.1.3.</span> <span class="nav-text">转十六进制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E8%BF%9B%E5%88%B6-1"><span class="nav-number">3.2.</span> <span class="nav-text">其他进制转十进制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BD%AC%E5%8D%81-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">二转十</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E8%BD%AC%E5%8D%81-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">八转十</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E5%85%AD%E8%BD%AC%E5%8D%81-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">十六转十</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E8%BF%9B%E5%88%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2-1"><span class="nav-number">3.3.</span> <span class="nav-text">不同进制之间的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">其他进制转二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6-1"><span class="nav-number">3.3.2.</span> <span class="nav-text">二进制转其他进制</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Stargaze"
+      src="/images/preview.jpg">
+  <p class="site-author-name" itemprop="name">Stargaze</p>
+  <div class="site-description" itemprop="description">一个什么都想学的新手</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:lcfjya@gmail.com" title="E-Mail → mailto:lcfjya@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/xlbbd" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;xlbbd" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/xljya" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xljya" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=3857624959&site=qq&menu=yes&jumpflag=1" title="QQ → https:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;3857624959&amp;site&#x3D;qq&amp;menu&#x3D;yes&amp;jumpflag&#x3D;1" rel="noopener me" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://liuyueyue.top/posts/2023/12/09/2110329172.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/preview.jpg">
+      <meta itemprop="name" content="Stargaze">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StargazeのBlog">
+      <meta itemprop="description" content="一个什么都想学的新手">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="进制转换 | StargazeのBlog">
+      <meta itemprop="description" content="记录一下常用进制转换的方法。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          进制转换
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-09 17:38:42" itemprop="dateCreated datePublished" datetime="2023-12-09T17:38:42+08:00">2023-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-04 15:51:57" itemprop="dateModified" datetime="2024-06-04T15:51:57+08:00">2024-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/2023/12/09/2110329172.html#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/posts/2023/12/09/2110329172.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>975</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">记录一下常用进制转换的方法。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>因为要备战蓝桥杯，也是为了以后方便自己查看，总结一下常见进制转换，比如其他进制转十进制，十进制转其他进制，和不同进制之间的转换，一般进制转换分为调用api和手写代码两种。</p>
+<br>
+
+<h1 id="调用API"><a href="#调用API" class="headerlink" title="调用API"></a>调用API</h1><h2 id="十进制转其他进制"><a href="#十进制转其他进制" class="headerlink" title="十进制转其他进制"></a>十进制转其他进制</h2><h3 id="转二进制"><a href="#转二进制" class="headerlink" title="转二进制"></a>转二进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将十进制数转换为二进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">decimalToBinary</span><span class="params">(<span class="type">int</span> decimal)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Integer.toBinaryString(decimal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="转八进制"><a href="#转八进制" class="headerlink" title="转八进制"></a>转八进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将十进制数转换为八进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">decimalToOctal</span><span class="params">(<span class="type">int</span> decimal)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Integer.toOctalString(decimal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="转十六进制"><a href="#转十六进制" class="headerlink" title="转十六进制"></a>转十六进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将十进制数转换为十六进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">decimalToHexadecimal</span><span class="params">(<span class="type">int</span> decimal)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Integer.toHexString(decimal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h2 id="其他进制转十进制"><a href="#其他进制转十进制" class="headerlink" title="其他进制转十进制"></a>其他进制转十进制</h2><h3 id="二转十"><a href="#二转十" class="headerlink" title="二转十"></a>二转十</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将二进制数转换为十进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binaryToDecimal</span><span class="params">(String binary)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Integer.parseInt(binary, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="八转十"><a href="#八转十" class="headerlink" title="八转十"></a>八转十</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将八进制数转换为十进制数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">octalToDecimal</span><span class="params">(String octal)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.parseInt(octal, <span class="number">8</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="十六转十"><a href="#十六转十" class="headerlink" title="十六转十"></a>十六转十</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将十六进制数转换为十进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">hexadecimalToDecimal</span><span class="params">(String hexadecimal)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Integer.parseInt(hexadecimal, <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h2 id="不同进制之间的转换"><a href="#不同进制之间的转换" class="headerlink" title="不同进制之间的转换"></a>不同进制之间的转换</h2><h3 id="其他进制转二进制"><a href="#其他进制转二进制" class="headerlink" title="其他进制转二进制"></a>其他进制转二进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">octal</span> <span class="operator">=</span> <span class="string">&quot;52&quot;</span>;</span><br><span class="line">    <span class="comment">// 八进制转换为二进制</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">binaryFromOctal</span> <span class="operator">=</span> Integer.toBinaryString(Integer.parseInt(octal, <span class="number">8</span>));</span><br><span class="line">    System.out.println(<span class="string">&quot;Octal to Binary: &quot;</span> + binaryFromOctal);<span class="comment">//101010</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">hexadecimal</span> <span class="operator">=</span> <span class="string">&quot;2a&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 十六进制转换为二进制</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">binaryFromHexadecimal</span> <span class="operator">=</span> Integer.toBinaryString(Integer.parseInt(hexadecimal, <span class="number">16</span>));</span><br><span class="line">    System.out.println(<span class="string">&quot;Hexadecimal to Binary: &quot;</span> + binaryFromHexadecimal);<span class="comment">//101010</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="二进制转其他进制"><a href="#二进制转其他进制" class="headerlink" title="二进制转其他进制"></a>二进制转其他进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">binary</span> <span class="operator">=</span> <span class="string">&quot;101010&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 二进制转换为八进制</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">octal</span> <span class="operator">=</span> Integer.toString(Integer.parseInt(binary, <span class="number">2</span>), <span class="number">8</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;Binary to Octal: &quot;</span> + octal); <span class="comment">//52</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 二进制转换为十六进制</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">hexadecimal</span> <span class="operator">=</span> Integer.toString(Integer.parseInt(binary, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;Binary to Hexadecimal: &quot;</span> + hexadecimal); <span class="comment">//2a</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h1 id="手动实现"><a href="#手动实现" class="headerlink" title="手动实现"></a>手动实现</h1><h2 id="十进制转其他进制-1"><a href="#十进制转其他进制-1" class="headerlink" title="十进制转其他进制"></a>十进制转其他进制</h2><h3 id="转二进制-1"><a href="#转二进制-1" class="headerlink" title="转二进制"></a>转二进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将十进制数转换为二进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">decimalToBinary</span><span class="params">(<span class="type">int</span> decimal)</span> &#123;</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">binary</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="keyword">while</span> (decimal &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        binary.insert(<span class="number">0</span>, decimal % <span class="number">2</span>);</span><br><span class="line">        decimal /= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> binary.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="转八进制-1"><a href="#转八进制-1" class="headerlink" title="转八进制"></a>转八进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将十进制数转换为八进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">decimalToOctal</span><span class="params">(<span class="type">int</span> decimal)</span> &#123;</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">octal</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="keyword">while</span> (decimal &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        octal.insert(<span class="number">0</span>, decimal % <span class="number">8</span>);</span><br><span class="line">        decimal /= <span class="number">8</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> octal.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="转十六进制-1"><a href="#转十六进制-1" class="headerlink" title="转十六进制"></a>转十六进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将十进制数转换为十六进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">decimalToHexadecimal</span><span class="params">(<span class="type">int</span> decimal)</span> &#123;</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">hexadecimal</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="keyword">while</span> (decimal &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">remainder</span> <span class="operator">=</span> decimal % <span class="number">16</span>;</span><br><span class="line">        <span class="keyword">if</span> (remainder &lt; <span class="number">10</span>) &#123;</span><br><span class="line">            hexadecimal.insert(<span class="number">0</span>, (<span class="type">char</span>) (remainder + <span class="string">&#x27;0&#x27;</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            hexadecimal.insert(<span class="number">0</span>, (<span class="type">char</span>) (remainder - <span class="number">10</span> + <span class="string">&#x27;A&#x27;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        decimal /= <span class="number">16</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hexadecimal.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h2 id="其他进制转十进制-1"><a href="#其他进制转十进制-1" class="headerlink" title="其他进制转十进制"></a>其他进制转十进制</h2><h3 id="二转十-1"><a href="#二转十-1" class="headerlink" title="二转十"></a>二转十</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将二进制数转换为十进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binaryToDecimal</span><span class="params">(String binary)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">decimal</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">power</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> binary.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">digit</span> <span class="operator">=</span> binary.charAt(i) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        decimal += digit * Math.pow(<span class="number">2</span>, power);</span><br><span class="line">        power++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> decimal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="八转十-1"><a href="#八转十-1" class="headerlink" title="八转十"></a>八转十</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将八进制数转换为十进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">octalToDecimal</span><span class="params">(String octal)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">decimal</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">power</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> octal.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">digit</span> <span class="operator">=</span> octal.charAt(i) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        decimal += digit * Math.pow(<span class="number">8</span>, power);</span><br><span class="line">        power++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> decimal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="十六转十-1"><a href="#十六转十-1" class="headerlink" title="十六转十"></a>十六转十</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将十六进制数转换为十进制数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">hexadecimalToDecimal</span><span class="params">(String hexadecimal)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">decimal</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">power</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> hexadecimal.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="type">char</span> <span class="variable">digit</span> <span class="operator">=</span> hexadecimal.charAt(i);</span><br><span class="line">        <span class="keyword">if</span> (digit &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; digit &lt;= <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">            decimal += (digit - <span class="string">&#x27;0&#x27;</span>) * Math.pow(<span class="number">16</span>, power);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (digit &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; digit &lt;= <span class="string">&#x27;F&#x27;</span>) &#123;</span><br><span class="line">            decimal += (digit - <span class="string">&#x27;A&#x27;</span> + <span class="number">10</span>) * Math.pow(<span class="number">16</span>, power);</span><br><span class="line">        &#125;</span><br><span class="line">        power++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> decimal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h2 id="不同进制之间的转换-1"><a href="#不同进制之间的转换-1" class="headerlink" title="不同进制之间的转换"></a>不同进制之间的转换</h2><h3 id="其他进制转二进制-1"><a href="#其他进制转二进制-1" class="headerlink" title="其他进制转二进制"></a>其他进制转二进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//八进制转二进制</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">octalToBinary</span><span class="params">(String octalNumber)</span> &#123;</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">binaryNumber</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; octalNumber.length(); i++) &#123;</span><br><span class="line">        <span class="type">char</span> <span class="variable">digit</span> <span class="operator">=</span> octalNumber.charAt(i);</span><br><span class="line">        <span class="type">int</span> <span class="variable">decimal</span> <span class="operator">=</span> Character.getNumericValue(digit);</span><br><span class="line">        <span class="type">String</span> <span class="variable">binary</span> <span class="operator">=</span> Integer.toBinaryString(decimal);</span><br><span class="line">        binaryNumber.append(binary);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> binaryNumber.toString();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//十六进制转二进制</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">hexadecimalToBinary</span><span class="params">(String hexadecimalNumber)</span> &#123;</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">binaryNumber</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; hexadecimalNumber.length(); i++) &#123;</span><br><span class="line">        <span class="type">char</span> <span class="variable">digit</span> <span class="operator">=</span> hexadecimalNumber.charAt(i);</span><br><span class="line">        <span class="type">int</span> <span class="variable">decimal</span> <span class="operator">=</span> Character.digit(digit, <span class="number">16</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">binary</span> <span class="operator">=</span> Integer.toBinaryString(decimal);</span><br><span class="line">        binaryNumber.append(binary);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> binaryNumber.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="二进制转其他进制-1"><a href="#二进制转其他进制-1" class="headerlink" title="二进制转其他进制"></a>二进制转其他进制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二转八</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">binaryToOctal</span><span class="params">(String binaryNumber)</span> &#123;</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">octalNumber</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> binaryNumber.length();</span><br><span class="line">    <span class="type">int</span> <span class="variable">padding</span> <span class="operator">=</span> length % <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">if</span> (padding != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">3</span> - padding; i++) &#123;</span><br><span class="line">            octalNumber.append(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        binaryNumber = octalNumber + binaryNumber;</span><br><span class="line">        length += (<span class="number">3</span> - padding);</span><br><span class="line">    &#125;</span><br><span class="line">    octalNumber.setLength(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; length; i += <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">triplet</span> <span class="operator">=</span> binaryNumber.substring(i, i + <span class="number">3</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">decimal</span> <span class="operator">=</span> Integer.parseInt(triplet, <span class="number">2</span>);</span><br><span class="line">        octalNumber.append(decimal);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> octalNumber.toString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//二转十六</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">binaryToHexadecimal</span><span class="params">(String binaryNumber)</span> &#123;</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">hexadecimalNumber</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> binaryNumber.length();</span><br><span class="line">    <span class="type">int</span> <span class="variable">padding</span> <span class="operator">=</span> length % <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">if</span> (padding != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">4</span> - padding; i++) &#123;</span><br><span class="line">            hexadecimalNumber.append(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        binaryNumber = hexadecimalNumber + binaryNumber;</span><br><span class="line">        length += (<span class="number">4</span> - padding);</span><br><span class="line">    &#125;</span><br><span class="line">    hexadecimalNumber.setLength(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; length; i += <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">quadruplet</span> <span class="operator">=</span> binaryNumber.substring(i, i + <span class="number">4</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">decimal</span> <span class="operator">=</span> Integer.parseInt(quadruplet, <span class="number">2</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">hex</span> <span class="operator">=</span> Integer.toHexString(decimal).toUpperCase();</span><br><span class="line">        hexadecimalNumber.append(hex);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hexadecimalNumber.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Stargaze
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://liuyueyue.top/posts/2023/12/09/2110329172.html" title="进制转换">http://liuyueyue.top/posts/2023/12/09/2110329172.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%88%B7%E9%A2%98%E6%97%A5%E5%B8%B8/" rel="tag"># 刷题日常</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2023/11/24/3876151684.html" rel="prev" title="科学上网基础教程">
+                  <i class="fa fa-angle-left"></i> 科学上网基础教程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2023/12/20/4133790210.html" rel="next" title="申请美国自由大学教育邮箱">
+                  申请美国自由大学教育邮箱 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+
+    <span class="author" itemprop="copyrightHolder">Stargaze</span>
+
+
+  </div>
+<div class="busuanzi-count">
+
+</div>
+
+
+<!-- <br /> -->
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/27/2023 17:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+    }
+//+hnum + " 小时 " + mnum + " 分 " + snum + " 秒"
+setInterval("createtime()",250);
+</script>
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鄂ICP备2023003756号-2 </a>
+  </div>
+
+<div>
+    本网站由<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><div style="display:inline-block; margin-top: 5px;"><img src="https://image.liucf.com/images/2025/03/4ff5b7d3ed727d330fcdda17165de906.png" height="15px" /></div></a>提供CDN加速/云存储服务
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.liuyueyue.top","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"发表评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":["nick"],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/posts/2023/12/09/2110329172.html"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@waline/client@v2/dist/waline-meta.css"
+/>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
